@@ -1,0 +1,8 @@
+<h3>Menu</h3>
+<% unless logged_in? %>
+  <%= link_to('Sign Up!', signup_path) %>
+  <hr />
+<% end %>
+<%= link_to('BSC', about_path) %>
+<%= link_to('MUME', mume_path) %>
+<%= link_to('BN History', history_path) %>

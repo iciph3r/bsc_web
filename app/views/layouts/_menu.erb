@@ -1,0 +1,39 @@
+<ul>
+<% if logged_in? %>
+  <li><%= link_to(current_user) do %>
+    <%= icon('fw') %>
+    <%= current_user.name %>
+    <%= icon('caret-down fa-fw') %>
+    <% end %>
+    <ul>
+      <li><%= link_to(icon('cog fa-fw', 'Settings'), edit_user_path(current_user)) %></li>
+      <li><%= link_to(icon('sign-out fa-fw', 'Logout'), logout_path, method: 'delete') %></li>
+      <% if current_user.admin? %>
+      <li><hr /></li>
+      <li><%= link_to(icon('cogs fa-fw', 'Admin'), admin_root_path) %></li>
+      <% end %>
+    </ul>
+  </li>
+<% else %>
+  <li>
+    <%= link_to(login_path) do %>
+      <%= icon('fw', 'Log In') %>
+      <%= icon('caret-down fa-fw') %>
+    <% end %>
+    <ul>
+      <div class="form login-bar">
+      <fieldset>
+        <legend>BSC Login</legend>
+        <%= form_for(:session, url: login_path) do |f| %>
+          <li><%= f.text_field :name, placeholder: 'Username' %></li>
+          <li><%= f.password_field :password, placeholder: 'Password' %></li>
+          <li><%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
+            <%= icon('sign-in', 'Log in') %>
+          <% end %></li>
+        <% end %>
+      </fieldset>
+      </div>
+    </ul>
+  </li>
+<% end %>
+</ul>

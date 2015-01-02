@@ -1,0 +1,125 @@
+@import "globals/all";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+
+}
+
+body {
+  background-color: $global_background_color;
+  color: $global_font_color;
+  line-height: $global_line_height;
+  font-family: $global_font_family;
+  min-width: 960px;
+}
+
+
+.bsc_image {
+  display: block;
+  margin: 0 auto;
+  width: 700px;
+  height: 122px;
+}
+
+footer {
+  color: $global_font_background_color;
+  float: left;
+  margin: 10px auto;
+  text-align: center;
+}
+
+nav {
+  background-color: $global_foreground_color;
+  border: 1px solid $global_border_color;
+  border-radius: $global_border_radius;
+  a {
+    display: inline-block;
+    padding: 10px;
+    &:hover {
+      color: #f00;
+      background-color: #8a0707;
+      text-decoration: none;
+    }
+  }
+}
+
+h1 {
+  border-bottom: 1px solid $global_border_color;
+  color: $global_font_color;
+  font-size: 1.5em;
+  margin: 0 0 10px 0;
+}
+
+h3 {
+  border-bottom: 1px solid $global_border_color;
+  color: $global_font_color;
+  font-size: 1em;
+  margin: 10px;
+}
+
+hr {
+  background: $global_border_color;
+  border: 0;
+  height: 1px;
+  margin: 10px 0;
+}
+
+pre {
+  background: black;
+  font-size: 1.1em;
+  white-space: pre-wrap;
+  padding: 5px;
+}
+
+a {
+  color: $global_link_color;
+  text-decoration: none;
+  &:hover {
+    //color: $link_hover_color;
+    text-decoration: underline;
+    i {
+      visibility: visible;
+    }
+  }
+  i {
+    visibility: hidden;
+  }
+}
+
+input, button, textarea, select {
+  background-color: #111;
+  border-radius: $global_border_radius;
+  border: 1px solid $global_border_color;
+  color: $global_font_color;
+  display: block;
+  font-size: 1em;
+  padding: 5px;
+  margin: 0 auto 10px auto;
+  transition: all .1s ease-in-out;
+  width: 100%;
+  &:focus, &:hover {
+    box-shadow: 0 0 .25em red;
+    transition: all .1s ease-in-out;
+  }
+}
+
+textarea {
+  height: 10em;
+}
+
+label {
+  display: block;
+  margin: 0 auto;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  legend {
+    display: none;
+  }
+}

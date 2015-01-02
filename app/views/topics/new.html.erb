@@ -1,0 +1,36 @@
+<% provide(:title, 'New Topic') %>
+<% content_for :navigation do %>
+  <%= render 'topics/topics_nav' %>
+<% end %>
+
+<div class="forum new">
+  <h1>New Topic</h1>
+  <div class="form topic-form">
+    <%= form_for(@topic) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <% if current_user.bsc? %>
+        <%= f.label :bsc, 'Topic Visibility:' %>
+        <%= f.select :bsc, [['For Everyone to View/Comment', false],
+                            ['For BSC Members Only', true]] %>
+      <% end %>
+
+      <% if current_user.admin? %>
+        <%= f.label :sticky, 'Sticky Thread?' %>
+        <%= f.check_box :sticky %>
+      <% end %>
+
+      <%= f.fields_for :comments do |comment| %>
+        <%= comment.label :content, 'Topic text' %>
+        <%= comment.text_area :content, placeholder: 'Comment...' %>
+      <% end %>
+
+      <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
+        <%= 'New Topic' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

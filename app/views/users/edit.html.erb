@@ -1,0 +1,26 @@
+<% provide(:title, "User Settings") %>
+<% content_for :navigation do %>
+  <%= render 'users/users_nav' %>
+<% end %>
+
+<div class="users">
+  <h1><%= @user.name %>'s settings</h1>
+  <div class="form users-form">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= button_tag(type: 'submit', class: 'btn', name: 'commit') do %>
+        <%= icon('save', 'Save Changes') %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

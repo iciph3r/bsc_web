@@ -1,0 +1,28 @@
+<section class="topic">
+  <h2>
+    <%= icon('thumb-tack fa-fw') if topic.sticky? %>
+    <%= hidden(topic.hidden?) %>
+    <%= bsc_only(topic.bsc?) %>
+    <%= link_to(topic.title, topic_comments_path(topic)) %>
+  </h2>
+  <span class="pull-right">
+    <%= link_to(icon('edit', 'Edit'),
+                edit_topic_path(topic)) if current_user?(topic.user) %>
+  </span>
+  <div class="author">
+    By <strong><%= topic.user.name %> </strong>
+       on <%= topic.created_at.strftime('%d %b %Y') %>
+  </div>
+  <div class="stats">
+  Viewed <%= pluralize(topic.view_count, 'time') %>.
+  <% if topic.comments.any? %>
+    Last comment <%= time_ago_in_words(topic.comments.first.created_at) %> ago
+    by <%= topic.comments.first.user.name %>.
+  <% else %>
+    No comments.
+  <% end %>
+    <span class="pull-right">
+      <%= pluralize(topic.comments.size, 'comment') %>.
+    </span>
+  </div>
+</section>

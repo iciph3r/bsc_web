@@ -1,0 +1,24 @@
+@import "globals/all";
+
+.btn {
+  background-color: $global_background_color;
+  border: 1px solid $global_border_color;
+  border-radius: $global_border_radius;
+  color: $global_link_color;
+  margin-top: 10px;
+  padding: 5px;
+  &:hover {
+    background-color: black;
+    color: red;
+  }
+  i {
+    visibility: visible;
+  }
+}
+
+.btn.btn-edit {
+  background-color: yellow;
+  border: 1px solid yellow;
+  border-radius: $global_border_radius;
+  color: yellow;
+}

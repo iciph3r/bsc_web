@@ -1,0 +1,15 @@
+<% provide(:title, 'Forum Index') %>
+<% content_for :navigation do %>
+  <%= render 'topics/topics_nav' %>
+<% end %>
+
+<div class="forum index">
+  <h1>Forum Index</h1>
+  <% if @topics.sticky.any? %>
+    <%= render partial: @topics.sticky, spacer_template: 'shared/hr' %>
+    <hr />
+  <% end %>
+  <%= render partial: @topics.not_sticky, spacer_template: 'shared/hr' %>
+
+  <%= will_paginate %>
+</div>

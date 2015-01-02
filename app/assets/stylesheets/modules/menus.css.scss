@@ -1,0 +1,63 @@
+@import "globals/all";
+
+nav ul ul {
+  display: none;
+  position: absolute;
+  width: auto;
+  //top: 100%;
+  right: -1px;
+  left: -1px;
+  border: 1px solid $global_border_color;
+  border-bottom-left-radius: $global_border_radius;
+  border-bottom-right-radius: $global_border_radius;
+  border-top: 1px solid $global_foreground_color;
+  background-color: $global_foreground_color;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li:hover > ul {
+  display: block;
+  box-shadow: 0 8px 6px -5px #222;
+}
+
+nav ul {
+  list-style: none;
+  text-indent: none;
+  position: relative;
+  display: inline-block;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+nav ul ul li {
+  //float: none;
+}
+
+nav li a {
+  display: block;
+}
+
+nav ul li a i {
+  visibility: visible !important;
+}
+
+nav ul li ul a i {
+  visibility: hidden !important;
+}
+
+nav ul li ul a:hover i {
+  visibility: visible !important;
+}
+
+.login-bar {
+  margin: 10px;
+}

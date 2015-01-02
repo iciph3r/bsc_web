@@ -1,0 +1,48 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+patience:
+  id: 1
+  name: patience
+  email: patience@bsc.bsc
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.now %>
+  admin: true
+  bsc: true
+
+impatience:
+  id: 2
+  name: impatience
+  email: impatience@bsc.bsc
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.now %>
+  admin: true
+
+non_admin:
+  id: 3
+  name: notanadmin
+  email: not@admin.bsc
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.now %>
+  admin: false
+
+non_bsc:
+  name: notabsc
+  email: not@bsc.bsc
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.now %>
+  admin: false
+  bsc: false
+
+<% ('a'..'af').each do |postfix| %>
+bscuser<%= postfix %>:
+  name: bscuser<%= postfix %>
+  email: bscuser<%= postfix %>@bsc.bsc
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.now %>
+  admin: false
+<% end %>

@@ -1,0 +1,40 @@
+@import "globals/all";
+
+.forum {
+  &.index {
+    @extend %box;
+  }
+  &.comment {
+    @extend %box;
+    p {
+      margin: 5px 0 0 0;
+    }
+    .header {
+      border-bottom: 1px solid $global_border_color;
+    }
+  }
+  &.new {
+    @extend %box
+  }
+  h2 {
+    display: inline-block;
+    font-size: $global_font_size;
+    margin: 0;
+  }
+  .title {
+    @extend %box;
+  }
+  .form {
+    .comment-form {
+      @extend %box;
+    }
+  }
+  .topic-form {
+    width: 50%;
+  }
+}
+
+.pull-right {
+  display: inline-block;
+  float: right;
+}

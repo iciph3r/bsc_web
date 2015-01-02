@@ -1,0 +1,9 @@
+@import "./variables";
+
+%box {
+  background-color: $global_foreground_color;
+  border: 1px solid $global_border_color;
+  border-radius: $global_border_radius;
+  margin: 10px 0;
+  padding: $global_padding_size;
+}

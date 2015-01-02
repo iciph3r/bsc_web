@@ -1,0 +1,5 @@
+<%= @user.name %>,
+
+Welcome to the BSC's website! Please click the link below to activate your
+account:
+<%= edit_account_url(@user.activation_token, email: @user.email) %>

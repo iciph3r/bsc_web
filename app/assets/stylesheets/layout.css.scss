@@ -1,0 +1,19 @@
+@import "globals/all";
+
+.l-full-width {
+  margin: 0 5px;
+  width: 950px;
+}
+
+.l-side-bar {
+  float: left;
+  margin: 0 5px;
+  width: 150px;
+}
+
+.l-main {
+  float:left;
+  margin: 0 5px;
+  width: 790px;
+  //box-shadow: 0 0 5px #f00;
+}

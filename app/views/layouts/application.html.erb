@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="container_24">
+  <header>
+    <div class="bsc_image">
+      <%= image_tag('red-version-700-px.png', alt: 'Black Shadow Clan Logo') %>
+    </div>
+    <nav class="l-full-width nav-top">
+        <%= link_to(icon('home fa-fw', 'Home'), root_path) %>
+        <%= link_to(icon('info fa-fw', 'About'), about_path) %>
+        <%= link_to(icon('terminal fa-fw', 'Logs'), '#') %>
+        <%= link_to(icon('comments-o fa-fw','Forum'), topics_path) %>
+        <%= render 'layouts/menu' %>
+    </nav>
+  </header>
+  <nav class="l-side-bar nav-side">
+    <%= yield :navigation %>
+  </nav>
+  <% flash.each do |type, message| %>
+    <%= content_tag(:div, display_flash(message), class: "grid_20 flash #{type}") %>
+  <% end %>
+  <main class="l-main">
+    <%= yield %>
+  </main>
+  <footer class="l-full-width">
+    <small>&copy; Black Shadow Clan <%= Time.now.year %></small>
+  </footer>
+  <%= debug(params) if Rails.env.development? %>
+</body>
+</html>

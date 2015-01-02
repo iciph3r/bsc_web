@@ -1,0 +1,11 @@
+@import "globals/all";
+
+.members a {
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+}
+
+.pages {
+ @extend %box;
+}

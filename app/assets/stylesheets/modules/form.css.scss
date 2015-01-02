@@ -1,0 +1,17 @@
+@import "globals/all";
+
+.form {
+  padding: 0;
+  margin: 0 auto;
+  label {
+    float: left;
+    padding-right: 10px;
+  }
+  span {
+    display: block;
+    text-align: center;
+  }
+  button {
+    margin-bottom: 0 !important;
+  }
+}

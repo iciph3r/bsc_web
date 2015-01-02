@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  content: MyText
+  user_id: 1
+
+two:
+  id: 2
+  content: MyText
+  user_id: 2
+
+<% (3..40).each do |n| %>
+comment_<%= n %>:
+  id: <%= n %>
+  content: Lorem ipsum.
+  commentable_id: 1
+  commentable_type: Topic
+  user_id: 1
+<% end %>

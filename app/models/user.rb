@@ -1,0 +1,97 @@
+class User < ActiveRecord::Base
+  has_many :topics
+  has_many :comments
+
+  attr_accessor :activation_token, :reset_token
+
+  before_save :prepare
+  before_create :create_activation_digest
+
+  VALID_NAME_REGEX = /\A[[:alpha:]]+\z/i
+  validates :name, presence: true, length: { maximum: 50, minimum: 2 },
+                   format: { with: VALID_NAME_REGEX },
+                   uniqueness: { case_sensitive: false }
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+
+  has_secure_password
+  validates :password, length: { minimum: 6 }, allow_blank: true
+
+  TYPES = {
+    public: 0,
+    verified: 1,
+    bsc: 2,
+    editor: 3,
+    admin: 4,
+    site_admin: 5
+  }
+
+  ### Getter methods
+  def name
+    read_attribute(:name).humanize
+  end
+
+  def created
+    read_attribute(:created_at).strftime('%d %b %Y') unless created_at.nil?
+  end
+
+  def updated
+    read_attribute(:updated_at).strftime('%d %b %Y') unless updated_at.nil?
+  end
+
+  ### Authentication methods.
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  def self.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def authenticated?(attribute, token)
+    digest = self.send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  ### Activate account.
+  def activate
+    update_columns(activated: true,
+                   activated_at: Time.now)
+  end
+
+  def send_activation_email
+    UserMailer.account_activation(self).deliver!
+  end
+
+  ### Password reset methods.
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_columns(reset_digest: User.digest(reset_token),
+                   reset_sent_at: Time.now)
+  end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver!
+  end
+
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+
+  private
+    def prepare
+      self.email = email.downcase
+      self.name = name.downcase
+    end
+
+    def create_activation_digest
+      self.activation_token = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
+end

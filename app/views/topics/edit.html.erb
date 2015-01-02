@@ -1,0 +1,20 @@
+<% provide(:title, @topic.title) %>
+<% content_for :navigation do %>
+  <%= render 'topics/topics_nav' %>
+<% end %>
+
+<div class="forum">
+  <h1>Edit <%= @topic.title %></h1>
+  <div class="form topic-form">
+    <%= form_for(@topic) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
+        <%= icon('save fa-fw', 'Save Changes') %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

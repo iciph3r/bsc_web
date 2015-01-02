@@ -1,0 +1,10 @@
+<%= provide(:title, 'New Comment') %>
+<% content_for :navigation do %>
+  <%= render 'topics/topics_nav' %>
+<% end %>
+
+<h1>New Comment: <%= @context.title %></h1>
+<%= render partial: 'comment_form',
+           locals: { context: @context,
+                     comment: @comment,
+                     button_caption: 'Submit Comment' } %>

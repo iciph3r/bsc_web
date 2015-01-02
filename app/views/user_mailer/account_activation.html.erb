@@ -1,0 +1,11 @@
+<h1>Black Shadow Clan</h1>
+
+<p><%= @user.name %>,</p>
+
+<p>
+  Welcome to the BSC's website! Please click the link below to activate your
+  account:
+</p>
+
+<%= link_to "Activate!", edit_account_url(@user.activation_token,
+                                          email: @user.email) %>

@@ -1,0 +1,9 @@
+<% provide(:title, "#{@user.name}'s User Page".html_safe) %>
+<% content_for :navigation do %>
+  <% render 'users/users_nav' %>
+<% end %>
+
+<div class="users">
+  <h1><%= @user.name %></h1>
+  <%= render @user %>
+</div>

@@ -1,0 +1,15 @@
+@import "globals/all";
+
+.nav-side {
+  margin: 10px 5px;
+  a {
+    display: block;
+    padding: 0;
+    margin: 0 5px 0 5px;
+    &:hover {
+      text-decoration: underline;
+      color: white;
+      background-color: $global_foreground_color;
+    }
+  }
+}
