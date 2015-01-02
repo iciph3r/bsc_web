@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'log_controller/index'
+
+  get 'log_controller/edit'
+
+  get 'log_controller/new'
+
   root 'pages#index'
 
   # About pages
