@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :topics
+  has_many :logs
   has_many :comments
 
   attr_accessor :activation_token, :reset_token
@@ -19,15 +20,6 @@ class User < ActiveRecord::Base
 
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_blank: true
-
-  TYPES = {
-    public: 0,
-    verified: 1,
-    bsc: 2,
-    editor: 3,
-    admin: 4,
-    site_admin: 5
-  }
 
   ### Getter methods
   def name

@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'log_controller/index'
-
-  get 'log_controller/edit'
-
-  get 'log_controller/new'
-
   root 'pages#index'
 
   # About pages
@@ -25,6 +19,7 @@ Rails.application.routes.draw do
   resources :topics do
     resources :comments, only: [:index, :new, :create, :edit, :update]
   end
+  resources :logs, except: :destroy
 
   namespace :admin do
     root 'dashboard#index'

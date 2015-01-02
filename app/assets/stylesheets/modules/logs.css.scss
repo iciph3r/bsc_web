@@ -1,0 +1,7 @@
+@import "globals/all";
+
+.log {
+  &.new {
+    @extend %box;
+  }
+}
