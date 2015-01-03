@@ -3,9 +3,9 @@
   <%= render 'topics/topics_nav' %>
 <% end %>
 
-<div class="forum">
+<div class="forum topic-form">
   <h1>Edit <%= @topic.title %></h1>
-  <div class="form topic-form">
+  <div class="form">
     <%= form_for(@topic) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 

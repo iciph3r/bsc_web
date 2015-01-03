@@ -34,10 +34,12 @@
              collection: @comments,
              locals: { topic: @context }) %>
   <% if logged_in? %>
+  <div class="forum comment-form">
     <%= render partial: 'comment_form',
                locals: { context: @context,
                comment: @context.comments.build,
                button_caption: 'Submit Comment' } %>
   <% end %>
+  </div>
   <%= will_paginate %>
 </div>
