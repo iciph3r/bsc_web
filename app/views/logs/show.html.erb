@@ -1,0 +1,18 @@
+<% provide(:title, @log.title) %>
+<%= content_for :navigation do %>
+  <%= render 'log_nav' %>
+<% end %>
+
+<div class="log box">
+  <h1><%= @log.title %></h1>
+  <div class="author">
+    By <strong><%= @log.user.name %> </strong>
+    <%= @log.created_at.strftime('%d %b %Y') %>
+  </div>
+  <hr />
+  Log: <%= @log.path %>
+  <pre>
+    <% log_text = File.read(Rails.root.join('public', 'logs', @log.path)) %>
+    <%= @log_text %>
+  </pre>
+</div>

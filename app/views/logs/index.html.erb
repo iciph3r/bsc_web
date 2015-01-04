@@ -1,2 +1,9 @@
-<h1>LogController#index</h1>
-<p>Find me in app/views/log_controller/index.html.erb</p>
+<% provide(:title, 'Logs') %>
+<%= content_for :navigation do %>
+  <%= render 'log_nav' %>
+<% end %>
+
+<div class="log index">
+  <h1>Logs</h1>
+  <%= render partial: @logs, spacer_template: 'shared/hr' %>
+</div>
