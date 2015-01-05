@@ -1,28 +1,31 @@
-<div class="form topic-form">
-  <%= form_for(topic) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+<section class="topic-form">
+  <fieldset class="form">
+    <legend>New Topic Form</legend>
+    <%= form_for(topic) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
 
-    <% if current_user.bsc? %>
-      <%= f.label :bsc, 'Topic Visibility:' %>
-      <%= f.select :bsc, [['For Everyone to View/Comment', false],
-                          ['For BSC Members Only', true]] %>
+      <% if current_user.bsc? %>
+        <%= f.label :bsc, 'Topic Visibility:' %>
+        <%= f.select :bsc, [['For Everyone to View/Comment', false],
+                            ['For BSC Members Only', true]] %>
+      <% end %>
+
+      <% if current_user.admin? %>
+        <%= f.label :sticky, 'Sticky Thread?' %>
+        <%= f.check_box :sticky %>
+      <% end %>
+
+      <%= f.fields_for :comments do |comment| %>
+        <%= comment.label :content, 'Topic text' %>
+        <%= comment.text_area :content, placeholder: 'Comment...' %>
+      <% end %>
+
+      <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
+        <%= "#{button_caption}" %>
+      <% end %>
     <% end %>
-
-    <% if current_user.admin? %>
-      <%= f.label :sticky, 'Sticky Thread?' %>
-      <%= f.check_box :sticky %>
-    <% end %>
-
-    <%= f.fields_for :comments do |comment| %>
-      <%= comment.label :content, 'Topic text' %>
-      <%= comment.text_area :content, placeholder: 'Comment...' %>
-    <% end %>
-
-    <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
-      <%= "#{button_caption}" %>
-    <% end %>
-  <% end %>
-</div>
+  </fieldset>
+</section>

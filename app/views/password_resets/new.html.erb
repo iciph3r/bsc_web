@@ -3,14 +3,17 @@
   <%= render 'pages/pages_nav' %>
 <% end %>
 
-<h1>Forgot Password</h1>
-<div class="form forgot-password">
-  <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+<section class="users">
+  <h1>Forgot Password</h1>
+  <fieldset class="form">
+    <legend>Password Reset Form</legend>
+    <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
 
-    <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
-      <%= icon('paper-plane', 'Send Email') %>
+      <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
+        <%= icon('envelope fa-fw', 'Send Email') %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </fieldset>
+</section>

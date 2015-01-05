@@ -3,7 +3,7 @@
   <%= render 'log_nav' %>
 <% end %>
 
-<div class="log box">
+<article class="log box">
     <h1><%= @log.title %></h1>
     <span class="pull-right">
       <%= link_to(icon('edit', 'Edit'),
@@ -18,4 +18,4 @@
   <pre>
     <%= @log_text %>
   </pre>
-</div>
+</article>

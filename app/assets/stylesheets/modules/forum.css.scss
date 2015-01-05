@@ -13,11 +13,8 @@
       border-bottom: 1px solid $global_border_color;
     }
   }
-  &.comment-form {
-    @extend %box;
-    .form {
-      width: 80%;
-    }
+  .form {
+    width: 80%;
   }
   h2 {
     display: inline-block;

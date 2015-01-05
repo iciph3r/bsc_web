@@ -3,8 +3,8 @@
   <%= render 'topics/topics_nav' %>
 <% end %>
 
-<div class="forum topic">
-  <div class="title">
+<article class="forum topic">
+  <header class="title">
     <h1>
       <%= icon('thumb-tack fa-fw') if @context.sticky? %>
       <%= @context.title %>
@@ -29,17 +29,17 @@
         <%= pluralize(@comments.size, 'comment') %>.
       </span>
     </div>
-  </div>
+  </header>
   <%= render(partial: 'comment',
              collection: @comments,
              locals: { topic: @context }) %>
   <% if logged_in? %>
-  <div class="forum comment-form">
-    <%= render partial: 'comment_form',
-               locals: { context: @context,
-               comment: @context.comments.build,
-               button_caption: 'Submit Comment' } %>
+    <section class="forum comment">
+      <%= render partial: 'comment_form',
+                 locals: { context: @context,
+                 comment: @context.comments.build,
+                 button_caption: 'Submit Comment' } %>
+    </section>
   <% end %>
-  </div>
   <%= will_paginate %>
-</div>
+</article>

@@ -3,9 +3,10 @@
   <%= render 'users/users_nav' %>
 <% end %>
 
-<div class="users">
+<section class="users">
   <h1><%= @user.name %>'s settings</h1>
-  <div class="form users-form">
+  <fieldset class="form">
+    <legend>Edit User Form</legend>
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
@@ -22,5 +23,5 @@
         <%= icon('save', 'Save Changes') %>
       <% end %>
     <% end %>
-  </div>
-</div>
+  </fieldset>
+</section>

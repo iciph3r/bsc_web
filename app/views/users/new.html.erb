@@ -3,7 +3,7 @@
   <%= render 'users/users_nav' %>
 <% end %>
 
-<div class="users">
+<section class="users">
   <h1>Sign Up</h1>
   <p>
     Signing up for the BSC website allows you to not only view public threads and
@@ -14,28 +14,26 @@
   <p>
     If you have a BN character, please use that as your username.
   </p>
-  <div class="form users-form">
-    <fieldset>
-      <legend>Sign Up</legend>
-      <%= form_for(@user) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
+  <fieldset class="form">
+    <legend>Sign Up Form</legend>
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-        <%= f.label :name %>
-        <%= f.text_field :name, placeholder: 'Please use a MUME character name' %>
+      <%= f.label :name %>
+      <%= f.text_field :name, placeholder: 'Please use a MUME character name' %>
 
-        <%= f.label :email %>
-        <%= f.text_field :email %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
 
-        <%= f.label :password %>
-        <%= f.password_field :password %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
 
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation %>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
 
-        <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
-          Create my BSC Account
-        <% end %>
+      <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
+        Create my BSC Account
       <% end %>
-    </fieldset>
-  </div>
-</div>
+    <% end %>
+  </fieldset>
+</section>
