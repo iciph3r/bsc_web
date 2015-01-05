@@ -5,17 +5,15 @@
     <%= bsc_only(topic.bsc?) %>
     <%= link_to(topic.title, topic_comments_path(topic)) %>
   </h2>
-  <div class="author">
-    By <strong><%= topic.user.name %> </strong>
-       on <%= topic.created_at.strftime('%d %b %Y') %>
-  </div>
+  <time class="pull-right" datetime="<%= topic.created_at.strftime('%F') %>">
+    <%= topic.created_at.strftime('%-d %b %Y') %>
+  </time>
+  <div class="author">By <strong><%= topic.user.name %></strong></div>
   <div class="stats">
     Viewed <%= pluralize(topic.view_count, 'time') %>.
     <% if topic.comments.any? %>
       Last comment <%= time_ago_in_words(topic.comments.first.created_at) %> ago
       by <%= topic.comments.first.user.name %>.
-    <% else %>
-      No comments.
     <% end %>
     <span class="pull-right">
       <%= pluralize(topic.comments.size, 'comment') %>.
