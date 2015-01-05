@@ -5,9 +5,7 @@
     <%= bsc_only(topic.bsc?) %>
     <%= link_to(topic.title, topic_comments_path(topic)) %>
   </h2>
-  <time class="pull-right" datetime="<%= topic.created_at.strftime('%F') %>">
-    <%= topic.created_at.strftime('%-d %b %Y') %>
-  </time>
+  <%= show_time_stamp(topic.created_at) %>
   <div class="author">By <strong><%= topic.user.name %></strong></div>
   <div class="stats">
     Viewed <%= pluralize(topic.view_count, 'time') %>.

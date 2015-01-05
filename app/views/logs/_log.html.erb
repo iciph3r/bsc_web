@@ -5,9 +5,7 @@
       <%= link_to(log.title, log_path(log)) %>
     </h2>
     (<%= log.user.name %>)
-    <time class="pull-right", datetime="<%= log.created_at.strftime('%F') %>">
-      <%= log.created_at.strftime('%-d %b %Y') %>
-    </time>
+    <%= show_time_stamp(log.created_at) %>
   </header>
   <%= log.description %>
   <div class="stats">

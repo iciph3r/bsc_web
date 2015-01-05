@@ -21,6 +21,8 @@ module ApplicationHelper
   def show_time_stamp(datetime)
     iso_time = datetime.strftime('%F')
     print_time = datetime.strftime('%-d %b %Y')
-    %Q[<time datetime="#{iso_time}">#{print_time}</time>].html_safe
+    content_tag(:time, "#{print_time}",
+                datetime: "#{iso_time}",
+                class: "pull-right")
   end
 end
