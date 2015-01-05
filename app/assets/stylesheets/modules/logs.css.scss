@@ -1,12 +1,6 @@
 @import "globals/all";
 
 .log {
-  &.log-form {
-    @extend %box;
-    .form {
-      width: 80%;
-    }
-  }
   &.index {
     @extend %box;
     h2 {
@@ -17,5 +11,8 @@
   }
   &.box {
     @extend %box;
+  }
+  .form {
+    width: 75%;
   }
 }
