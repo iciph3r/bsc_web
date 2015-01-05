@@ -3,8 +3,8 @@ require 'test_helper'
 class TopicsControllerTest < ActionController::TestCase
 
   def setup
-    @user = users(:patience)
-    @other_user = users(:impatience)
+    @user = users(:admin)
+    @other_user = users(:bsc_user)
     @topic = topics(:one)
   end
 

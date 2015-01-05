@@ -1,25 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
-  user_id: 1
+  user: admin
   title: Stupid Elves!
   bsc: true
 
 two:
-  id: 2
-  user_id: 2
+  user: bsc_user
   title: Orcs!
   bsc: true
 
 sticky:
-  user_id: 2
+  user: bsc_user
   title: Title!
   sticky: true
 
 <% (3..55).each do |n| %>
 topic_<%= n %>:
-  user_id: 1
+  user: admin
   title: Lorem Ipsum
   bsc: false
 <% end %>

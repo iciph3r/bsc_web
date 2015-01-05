@@ -3,7 +3,7 @@ require 'test_helper'
 class UserPostsTopicTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users(:patience)
+    @user = users(:admin)
   end
 
   test 'invalid topic information before login with nested attributes' do

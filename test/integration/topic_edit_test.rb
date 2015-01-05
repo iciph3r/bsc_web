@@ -3,7 +3,7 @@ require 'test_helper'
 class UserEditsTopicTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users(:patience)
+    @user = users(:admin)
     @topic = topics(:two)
     @other_topic = topics(:one)
   end

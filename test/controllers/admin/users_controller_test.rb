@@ -3,7 +3,7 @@ require 'test_helper'
 class Admin::UsersControllerTest < ActionController::TestCase
 
   def setup
-    @user = users(:patience)
+    @user = users(:admin)
   end
 
   test 'should get pages' do
