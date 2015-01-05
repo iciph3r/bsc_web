@@ -6,7 +6,7 @@
     </h2>
     (<%= log.user.name %>)
     <time class="pull-right", datetime="<%= log.created_at.strftime('%F') %>">
-      <em><%= log.created_at.strftime('%-d %b %Y') %></em>
+      <%= log.created_at.strftime('%-d %b %Y') %>
     </time>
   </header>
   <%= log.description %>

@@ -17,4 +17,10 @@ module ApplicationHelper
       "#{icon('exclamation-triangle', message)}".html_safe
     end
   end
+
+  def show_time_stamp(datetime)
+    iso_time = datetime.strftime('%F')
+    print_time = datetime.strftime('%-d %b %Y')
+    %Q[<time datetime="#{iso_time}">#{print_time}</time>].html_safe
+  end
 end

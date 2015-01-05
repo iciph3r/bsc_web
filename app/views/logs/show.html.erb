@@ -5,11 +5,13 @@
 
 <div class="log box">
     <h1><%= @log.title %></h1>
+    <span class="pull-right">
+      <%= link_to(icon('edit', 'Edit'),
+                  edit_log_path(@log)) if current_user?(@log.user) %>
+    </span>
   <div class="author">
     Posted by <strong><%= @log.user.name %></strong> on
-    <time datetime="<%= @log.created_at.strftime('%F') %>">
-      <%= @log.created_at.strftime('%-d %b %Y') %>
-    </time>
+    <%= show_time_stamp @log.created_at %>
   </div>
   Description: <%= @log.description %>
   <hr />

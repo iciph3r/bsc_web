@@ -1,2 +1,4 @@
 <h3>Log Menu</h3>
-<%= link_to 'Post a Log', new_log_path %>
+<% if logged_in? %>
+  <%= link_to 'Post a Log', new_log_path %>
+<% end %>

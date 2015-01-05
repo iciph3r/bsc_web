@@ -1,5 +1,5 @@
 <div class="forum comment">
-  <div class="header">
+  <header class="header">
     <h2><%= comment.user.name %>:</h2>
     <small>
       <%= comment.created_at.strftime('(%-d %b %Y %-I:%M %p)') %>
@@ -8,7 +8,7 @@
       <%= link_to(icon('edit', 'Edit'),
       edit_topic_comment_path(topic, comment)) if current_user?(comment.user) %>
     </span>
-  </div>
+  </header>
   <p>
     <%= comment.content %>
   </p>
