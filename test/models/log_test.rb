@@ -37,4 +37,21 @@ class LogTest < ActiveSupport::TestCase
     log.view_count = -1
     assert_not log.valid?
   end
+
+  test 'increment_view increments view by one' do
+    log = Log.new
+    assert_equal log.view_count, 0
+    log.increment_view
+    log.reload
+    assert_equal log.view_count, 1
+  end
+
+  test 'decrement_view decrements view by one' do
+    log = Log.new
+    assert_equal log.view_count, 0
+    log.view_count = 7
+    log.decrement_view
+    log.reload
+    assert_equal log.view_count, 6
+  end
 end

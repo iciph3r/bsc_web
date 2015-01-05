@@ -7,7 +7,9 @@
     <h1><%= @log.title %></h1>
   <div class="author">
     Posted by <strong><%= @log.user.name %></strong> on
-    <%= @log.created_at.strftime('%-d %b %Y') %>
+    <time datetime="<%= @log.created_at.strftime('%F') %>">
+      <%= @log.created_at.strftime('%-d %b %Y') %>
+    </time>
   </div>
   Description: <%= @log.description %>
   <hr />

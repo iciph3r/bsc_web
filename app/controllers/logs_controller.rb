@@ -34,13 +34,27 @@ class LogsController < ApplicationController
   end
 
   def edit
+    @log = Log.find(params[:id])
   end
 
   def update
+    @log = Log.find(params[:id])
+    if @log.update_attributes(log_params)
+      @log.decrement_view
+      redirect_to log_path(@log), notice: 'Update successful.'
+    else
+      render 'edit'
+    end
   end
 
   private
     def log_params
       params.require(:log).permit(:title, :description, :bsc)
+    end
+
+    def correct_user
+      log = Log.find(params[:id])
+      m = 'You may only edit your own logs.'
+      redirect_to(log_path(log), alert: m) unless current_user?(log.user)
     end
 end
