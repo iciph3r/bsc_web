@@ -4,15 +4,14 @@
 <% end %>
 
 <div class="log box">
-  <h1><%= @log.title %></h1>
+    <h1><%= @log.title %></h1>
   <div class="author">
-    By <strong><%= @log.user.name %> </strong>
-    <%= @log.created_at.strftime('%d %b %Y') %>
+    Posted by <strong><%= @log.user.name %></strong> on
+    <%= @log.created_at.strftime('%-d %b %Y') %>
   </div>
+  Description: <%= @log.description %>
   <hr />
-  Log: <%= @log.path %>
   <pre>
-    <% log_text = File.read(Rails.root.join('public', 'logs', @log.path)) %>
     <%= @log_text %>
   </pre>
 </div>

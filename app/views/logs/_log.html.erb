@@ -1,16 +1,15 @@
 <section class="log">
-  <h2>
-    <%# bsc_only(log.bsc?) %>
-    <%= link_to(log.title, log_path(log)) %>
-  </h2>
-  <span class="pull-right">
-    <%# link_to(icon('edit', 'Edit'),
-    edit_topic_path(topic)) if current_user?(topic.user) %>
-  </span>
-  <div class="author">
-    By <strong><%= log.user.name %> </strong>
-    <%= log.created_at.strftime('%d %b %Y') %>
-  </div>
+  <header>
+    <h2>
+      <%# bsc_only(log.bsc?) %>
+      <%= link_to(log.title, log_path(log)) %>
+    </h2>
+    (<%= log.user.name %>)
+    <span class="pull-right">
+      <em><%= log.created_at.strftime('%-d %b %Y') %></em>
+    </span>
+  </header>
+  <%= log.description %>
   <div class="stats">
     Viewed <%= pluralize(log.view_count, 'time') %>.
     <% if log.comments.any? %>

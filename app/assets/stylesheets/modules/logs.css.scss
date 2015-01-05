@@ -10,6 +10,7 @@
   &.index {
     @extend %box;
     h2 {
+      display: inline-block;
       font-size: 1em;
       margin: 0;
     }
