@@ -43,5 +43,4 @@ class LogsController < ApplicationController
     def log_params
       params.require(:log).permit(:title, :description, :bsc)
     end
-
 end
