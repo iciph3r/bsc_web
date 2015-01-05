@@ -3,7 +3,7 @@ require 'test_helper'
 class UsersIndexTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users(:patience)
+    @user = users(:admin)
   end
 
   test 'users index including pagination' do

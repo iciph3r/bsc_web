@@ -3,8 +3,8 @@ require 'test_helper'
 class Admin::AuthorizationTestTest < ActionDispatch::IntegrationTest
 
   def setup
-    @admin = users(:patience)
-    @non_admin = users(:non_admin)
+    @admin = users(:admin)
+    @non_admin = users(:bsc_user)
   end
 
   test 'non admin users can not access admin namespace' do
