@@ -14,13 +14,13 @@
        on <%= topic.created_at.strftime('%d %b %Y') %>
   </div>
   <div class="stats">
-  Viewed <%= pluralize(topic.view_count, 'time') %>.
-  <% if topic.comments.any? %>
-    Last comment <%= time_ago_in_words(topic.comments.first.created_at) %> ago
-    by <%= topic.comments.first.user.name %>.
-  <% else %>
-    No comments.
-  <% end %>
+    Viewed <%= pluralize(topic.view_count, 'time') %>.
+    <% if topic.comments.any? %>
+      Last comment <%= time_ago_in_words(topic.comments.first.created_at) %> ago
+      by <%= topic.comments.first.user.name %>.
+    <% else %>
+      No comments.
+    <% end %>
     <span class="pull-right">
       <%= pluralize(topic.comments.size, 'comment') %>.
     </span>

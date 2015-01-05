@@ -7,21 +7,24 @@
   <h1>Upload a Log</h1>
 
   <div class="form">
-    <%= form_for @log do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+    <fieldset>
+      <legend>New Log Form</legend>
+      <%= form_for @log do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
 
-      <%= f.label :description %>
-      <%= f.text_field :description %>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
 
-      <%= f.label :log_file, 'Log file' %>
-      <%= f.file_field :log_file %>
+        <%= f.label :log_file, 'Log file' %>
+        <%= f.file_field :log_file %>
 
-      <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
-        Upload your log!
+        <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
+          Upload your log!
+        <% end %>
       <% end %>
-    <% end %>
+    </fieldset>
   </div>
 </div>

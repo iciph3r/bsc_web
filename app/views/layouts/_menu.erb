@@ -22,16 +22,16 @@
     <% end %>
     <ul>
       <div class="form login-bar">
-      <fieldset>
-        <legend>BSC Login</legend>
-        <%= form_for(:session, url: login_path) do |f| %>
-          <li><%= f.text_field :name, placeholder: 'Username' %></li>
-          <li><%= f.password_field :password, placeholder: 'Password' %></li>
-          <li><%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
-            <%= icon('sign-in', 'Log in') %>
-          <% end %></li>
-        <% end %>
-      </fieldset>
+        <fieldset>
+          <legend>BSC Login</legend>
+          <%= form_for(:session, url: login_path) do |f| %>
+            <li><%= f.text_field :name, placeholder: 'Username' %></li>
+            <li><%= f.password_field :password, placeholder: 'Password' %></li>
+            <li><%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
+              <%= icon('sign-in', 'Log in') %>
+            <% end %></li>
+          <% end %>
+        </fieldset>
       </div>
     </ul>
   </li>
