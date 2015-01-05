@@ -9,7 +9,5 @@
       edit_topic_comment_path(topic, comment)) if current_user?(comment.user) %>
     </span>
   </header>
-  <p>
     <%= simple_format comment.content %>
-  </p>
 </section>
