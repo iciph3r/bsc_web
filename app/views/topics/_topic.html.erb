@@ -2,8 +2,8 @@
   <h2>
     <%= icon('thumb-tack fa-fw') if topic.sticky? %>
     <%= hidden(topic.hidden?) %>
-    <%= bsc_only(topic.bsc?) %>
     <%= link_to(topic.title, topic_comments_path(topic)) %>
+    <%= bsc_only(topic.bsc?) %>
   </h2>
   <%= show_time_stamp(topic.created_at) %>
   <div class="author">By <strong><%= topic.user.name %></strong></div>
