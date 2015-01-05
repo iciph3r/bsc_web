@@ -3,28 +3,25 @@
   <%= render 'pages/pages_nav' %>
 <% end %>
 
-<div class="users">
+<section class="users">
   <h1>Log In</h1>
-  <div class="form users-form">
-    <fieldset>
-      <legend>Login Form</legend>
-      <%= form_for(:session, url: login_path) do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+  <fieldset class="form">
+    <legend>Login Form</legend>
+    <%= form_for(:session, url: login_path) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
 
-        <%= f.label :password %>
-        <%= link_to ' (Forgot Password?)', new_password_reset_path %>
-        <%= f.password_field :password %>
+      <%= f.label :password %>
+      <%= link_to ' (Forgot Password?)', new_password_reset_path %>
+      <%= f.password_field :password %>
 
-        <%= button_tag type: 'submit', name: 'commit', class: 'btn' do %>
-          <%= icon('sign-in', 'Log in') %>
-        <% end %>
+      <%= button_tag type: 'submit', name: 'commit', class: 'btn' do %>
+        <%= icon('sign-in', 'Log in') %>
       <% end %>
-      <p>
-        <span class="center">
-          New user? <%= link_to 'Create an account!', signup_path %>
-        </span>
-      </p>
-    </fieldset>
-  </div>
-</div>
+    <% end %>
+    <br />
+    <span class="center">
+      New user? <%= link_to 'Create an account!', signup_path %>
+    </span>
+  </fieldset>
+</section>
