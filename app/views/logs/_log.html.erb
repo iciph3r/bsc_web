@@ -11,8 +11,8 @@
   <div class="stats">
     Viewed <%= pluralize(log.view_count, 'time') %>.
     <% if log.comments.any? %>
-      Last comment <%= time_ago_in_words(topic.comments.first.created_at) %> ago
-      by <%= topic.comments.first.user.name %>.
+      Last comment <%= time_ago_in_words(log.comments.first.created_at) %> ago
+      by <%= log.comments.first.user.name %>.
     <% end %>
     <span class="pull-right">
       <%= pluralize(log.comments.size, 'comment') %>.

@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :new, :create, :edit, :update]
   end
   resources :logs, except: :destroy
+  resources :logs do
+    resources :comments, only: [:new, :create, :edit, :update]
+  end
 
   namespace :admin do
     root 'dashboard#index'

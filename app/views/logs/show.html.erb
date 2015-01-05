@@ -3,19 +3,31 @@
   <%= render 'log_nav' %>
 <% end %>
 
-<article class="log box">
+<article>
+  <section class="log box">
     <h1><%= @log.title %></h1>
     <span class="pull-right">
       <%= link_to(icon('edit', 'Edit'),
                   edit_log_path(@log)) if current_user?(@log.user) %>
     </span>
-  <div class="author">
-    Posted by <strong><%= @log.user.name %></strong> on
-    <%= show_time_stamp @log.created_at %>
+    <div class="author">
+      Posted by <strong><%= @log.user.name %></strong> on
+      <%= show_time_stamp @log.created_at %>
+    </div>
+    Description: <%= @log.description %>
+    <hr />
+    <pre>
+      <%= @log_text %>
+    </pre>
+  </section>
+  <% if @log.comments.any? %>
+      <%= render partial: 'comments/comment',
+                 collection: @log.comments %>
+  <% end %>
+  <div class="log box">
+    <%= render partial: 'comments/comment_form',
+               locals: { context: @log,
+                         comment: @log.comments.build,
+                         button_caption: 'Post Comment' } %>
   </div>
-  Description: <%= @log.description %>
-  <hr />
-  <pre>
-    <%= @log_text %>
-  </pre>
 </article>
