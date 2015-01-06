@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       if user.active?
         log_in user
-        redirect_back_or request.referrer
+        redirect_back_or user
       else
         message = 'Account not activated. '
         message += 'Check your email for the activation link.'
