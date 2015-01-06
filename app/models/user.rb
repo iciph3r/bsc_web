@@ -26,14 +26,6 @@ class User < ActiveRecord::Base
     read_attribute(:name).humanize
   end
 
-  def created
-    read_attribute(:created_at).strftime('%d %b %Y') unless created_at.nil?
-  end
-
-  def updated
-    read_attribute(:updated_at).strftime('%d %b %Y') unless updated_at.nil?
-  end
-
   ### Authentication methods.
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
