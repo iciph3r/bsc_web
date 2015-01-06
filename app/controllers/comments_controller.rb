@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     @comment = @context.comments.find(params[:id])
     @comment.update_attributes(comment_params)
     if @comment.save
-      redirect_to context_url(@context), notice: 'Update success.'
+      redirect_to context_url(@context), notice: 'Comment updated.'
       @context.decrement_view
     else
       render 'edit'
@@ -58,7 +58,7 @@ class CommentsController < ApplicationController
       comment = Comment.find(params[:id])
       message = 'You may only edit your own comments.'
       unless current_user?(comment.user)
-        redirect_to(root_url, alert: message)
+        redirect_to(context_url(context), alert: message)
       end
     end
 end
