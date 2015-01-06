@@ -48,6 +48,7 @@ class TopicsControllerTest < ActionController::TestCase
 
   test 'view count is incremented when user views thread' do
     assert_difference '@topic.view_count', 1 do
+      log_in_as @user
       get :show, id: @topic
       @topic.reload
     end

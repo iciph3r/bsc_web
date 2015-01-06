@@ -15,13 +15,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    if @topic.bsc? && !current_user.bsc?
-      redirect_to topics_path, alert: 'You can not view BSC logs.'
-      return
-    else
-      @comments = @topic.comments.paginate(page: params[:page])
-      @topic.increment_view
-    end
+    @comments = @topic.comments.paginate(page: params[:page])
+    @topic.increment_view
   end
 
   def new
