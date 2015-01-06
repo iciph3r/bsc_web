@@ -47,13 +47,13 @@ class TopicTest < ActiveSupport::TestCase
   end
 
   test 'hide and show should change hidden attribute' do
-    @topic.hidden = false
+    @topic.open!
     @topic.reload
     assert_not @topic.hidden?
-    @topic.hide!
+    @topic.hidden!
     @topic.reload
     assert @topic.hidden?
-    @topic.show!
+    @topic.open!
     assert_not @topic.hidden?
   end
 

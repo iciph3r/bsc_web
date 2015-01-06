@@ -21,12 +21,4 @@ class Topic < ActiveRecord::Base
   def decrement_view
     self.decrement!(:view_count, by = 1)
   end
-
-  def hide!
-    self.toggle!(:hidden) unless self.hidden
-  end
-
-  def show!
-    self.toggle!(:hidden) if self.hidden
-  end
 end

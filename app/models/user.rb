@@ -24,11 +24,6 @@ class User < ActiveRecord::Base
   enum level: [:user, :bn, :bsc, :admin]
   enum status: [:inactive, :active, :locked]
 
-  ### Getter methods
-  def name
-    self.name.humanize
-  end
-
   ### Authentication methods.
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -48,8 +43,7 @@ class User < ActiveRecord::Base
 
   ### Activate account.
   def activate
-    update_columns(activated: true,
-                   activated_at: Time.now)
+    update_columns(status: 1, activated_at: Time.now)
   end
 
   def send_activation_email
