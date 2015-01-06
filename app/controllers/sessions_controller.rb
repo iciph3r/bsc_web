@@ -11,8 +11,7 @@ class SessionsController < ApplicationController
       else
         message = 'Account not activated. '
         message += 'Check your email for the activation link.'
-        flash[:alert] = message
-        redirect_to root_url
+        redirect_to root_url, alert: message
       end
     else
       flash.now[:alert] = 'Invalid username/password combination'
@@ -22,7 +21,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    redirect_to root_url
-    flash[:notice] = 'You have logged out.'
+    redirect_to root_url, notice: 'You have logged out.'
   end
 end
