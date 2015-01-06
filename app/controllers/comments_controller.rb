@@ -1,17 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :logged_in_user?, only: [:new, :create, :edit, :update]
+  before_action :logged_in_user?, only: [:create, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
-
-  def index
-    @context = context
-    @comments = @context.comments.paginate(page: params[:page]).order(created_at: :asc)
-    @context.increment_view
-  end
-
-  def new
-    @context = context
-    @comment = @context.comments.build
-  end
 
   def create
     @context = context
@@ -34,14 +23,14 @@ class CommentsController < ApplicationController
     @comment = @context.comments.find(params[:id])
     @comment.update_attributes(comment_params)
     if @comment.save
-      redirect_to context_url(@context), notice: 'Update success.'
+      redirect_to context_url(@context), notice: 'Comment updated.'
+      @context.decrement_view
     else
       render 'edit'
     end
   end
 
   private
-
     def comment_params
       params.require(:comment).permit(:content)
     end
@@ -58,7 +47,7 @@ class CommentsController < ApplicationController
     # Redirect based on context.
     def context_url(context)
       if Topic === context
-        topic_comments_path(context)
+        topic_path(context)
       elsif Log === context
         log_path(context)
       end
@@ -69,7 +58,7 @@ class CommentsController < ApplicationController
       comment = Comment.find(params[:id])
       message = 'You may only edit your own comments.'
       unless current_user?(comment.user)
-        redirect_to(root_url, alert: message)
+        redirect_to(context_url(context), alert: message)
       end
     end
 end

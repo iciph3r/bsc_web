@@ -14,6 +14,12 @@ class CommentsControllerTest < ActionController::TestCase
     assert_redirected_to login_url
   end
 
+  test 'redirected on edit if not logged in' do
+    get :edit, topic_id: @topic, id: @comment
+    assert_not flash.empty?
+    assert_redirected_to login_url
+  end
+
   test 'redirected on update if not logged in' do
     patch :update, topic_id: @topic, id: @comment
     assert_not flash.empty?
@@ -24,13 +30,13 @@ class CommentsControllerTest < ActionController::TestCase
     log_in_as(@user)
     patch :update, topic_id: @topic, id: @comment
     assert_not flash.empty?
-    assert_redirected_to root_url
+    assert_redirected_to @topic
   end
 
-  test 'view count is incremented when someone views a thread' do
-    assert_difference '@topic.view_count', 1 do
-      get :index, topic_id: @topic
-      @topic.reload
-    end
+  test 'redirected on edit if wrong user' do
+    log_in_as(@user)
+    patch :update, topic_id: @topic, id: @comment
+    assert_not flash.empty?
+    assert_redirected_to @topic
   end
 end

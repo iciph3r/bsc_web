@@ -3,8 +3,10 @@
   <%= render 'topics/topics_nav' %>
 <% end %>
 
-<h1>New Comment: <%= @context.title %></h1>
-<%= render partial: 'comment_form',
-           locals: { context: @context,
-                     comment: @comment,
-                     button_caption: 'Submit Comment' } %>
+<section class="forum comment">
+  <h1>New Comment: <%= @context.title %></h1>
+  <%= render partial: 'shared/comment_form',
+             locals: { context: @context,
+                       comment: @comment,
+                       button_caption: 'Submit Comment' } %>
+</section>

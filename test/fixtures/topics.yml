@@ -15,6 +15,11 @@ sticky:
   title: Title!
   sticky: true
 
+non_bsc:
+  user: user
+  title: Title!
+  bsc: false
+
 <% (3..55).each do |n| %>
 topic_<%= n %>:
   user: admin

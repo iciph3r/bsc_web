@@ -18,7 +18,7 @@ class UserEditsTopicTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     patch topic_path(@topic), topic: { title: 'bye' }
     assert_not flash.empty?
-    assert_redirected_to topic_comments_path(@topic)
+    assert_redirected_to topic_path(@topic)
     @topic.reload
     assert_not_equal @topic.title, 'bye'
   end
@@ -28,7 +28,7 @@ class UserEditsTopicTest < ActionDispatch::IntegrationTest
     title = 'bye'
     patch topic_path(@other_topic), topic: { title: title }
     assert_not flash.empty?
-    assert_redirected_to topic_comments_path(@other_topic)
+    assert_redirected_to topic_path(@other_topic)
     @other_topic.reload
     assert_equal @other_topic.title, title
   end

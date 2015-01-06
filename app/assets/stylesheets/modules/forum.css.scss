@@ -4,15 +4,6 @@
   &.index {
     @extend %box;
   }
-  &.comment {
-    @extend %box;
-    p {
-      margin: 5px 0 0 0;
-    }
-    .header {
-      border-bottom: 1px solid $global_border_color;
-    }
-  }
   .form {
     width: 80%;
   }
@@ -29,6 +20,26 @@
     .form {
       width: 50%;
     }
+  }
+}
+
+.comment {
+  @extend %box;
+  header {
+    border-bottom: 1px solid $global_border_color;
+    margin-bottom: 5px;
+  }
+  .footer {
+    //border-top: 1px solid $global_border_color;
+    color: $global_font_background_color;
+    font-size: .8em;
+    margin-top: 5px;
+  }
+  h1 {
+    border: 0;
+    display: inline-block;
+    font-size: $global_font_size;
+    margin: 0;
   }
 }
 
