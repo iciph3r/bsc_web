@@ -23,6 +23,6 @@ module ApplicationHelper
     print_time = datetime.strftime('%-d %b %Y')
     content_tag(:time, "#{print_time}",
                 datetime: "#{iso_time}",
-                class: "pull-right")
+                class: 'pull-right')
   end
 end
