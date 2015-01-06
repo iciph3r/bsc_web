@@ -15,13 +15,13 @@ Rails.application.routes.draw do
   resources :users, except: :destroy
   resources :accounts, only: :edit
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :topics, except: [:show, :destroy]
+  resources :topics, except: :destroy
   resources :topics do
-    resources :comments, only: [:index, :new, :create, :edit, :update]
+    resources :comments, only: [:create, :edit, :update]
   end
   resources :logs, except: :destroy
   resources :logs do
-    resources :comments, only: [:new, :create, :edit, :update]
+    resources :comments, only: [:create, :edit, :update]
   end
 
   namespace :admin do
@@ -31,9 +31,6 @@ Rails.application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

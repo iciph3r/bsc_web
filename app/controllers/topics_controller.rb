@@ -13,6 +13,12 @@ class TopicsController < ApplicationController
     end
   end
 
+  def show
+    @topic = Topic.find(params[:id])
+    @comments = @topic.comments.paginate(page: params[:page])
+    @topic.increment_view
+  end
+
   def new
     @topic = current_user.topics.build
     @topic.comments.build

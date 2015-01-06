@@ -1,0 +1,45 @@
+<% provide(:title, @topic.title) %>
+<% content_for :navigation do %>
+  <%= render 'topics/topics_nav' %>
+<% end %>
+
+<article class="forum topic">
+  <header class="title">
+    <h1>
+      <%= icon('thumb-tack fa-fw') if @topic.sticky? %>
+      <%= @topic.title %>
+    </h1>
+    <div class="author">
+      By <strong><%= @topic.user.name %> </strong>
+      <%= @topic.created_at.strftime('at %-I:%M %p on %A %d %b %Y') %>
+      <span class="pull-right">
+        <%= link_to(icon('edit', 'Edit'),
+        edit_topic_path(@topic)) if current_user?(@topic.user) %>
+      </span>
+    </div>
+    <div class="stats">
+      Viewed <%= pluralize(@topic.view_count, 'time') %>.
+      <% if @comments.any? %>
+        Last comment <%= time_ago_in_words(@comments.last.created_at) %> ago
+        by <%= @comments.last.user.name %>.
+      <% else %>
+        No comments.
+      <% end %>
+      <span class="pull-right">
+        <%= pluralize(@comments.size, 'comment') %>.
+      </span>
+    </div>
+  </header>
+  <%= render(partial: 'shared/comment',
+             collection: @comments,
+             locals: { topic: @topic }) %>
+  <%= will_paginate @comments %>
+  <% if logged_in? %>
+    <div class="forum comment">
+    <%= render partial: 'shared/comment_form',
+               locals: { context: @topic,
+                         comment: @topic.comments.build,
+                         button_caption: 'Submit Comment' } %>
+    </div>
+  <% end %>
+</article>

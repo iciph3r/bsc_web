@@ -9,6 +9,7 @@ class LogsController < ApplicationController
   def show
     @log = Log.find(params[:id])
     @log_text = File.read(Rails.root.join('public', 'logs', @log.path))
+    @comments = @log.comments.paginate(page: params[:page])
     @log.increment_view
   end
 

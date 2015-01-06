@@ -1,17 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :logged_in_user?, only: [:new, :create, :edit, :update]
+  before_action :logged_in_user?, only: [:create, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
-
-  def index
-    @context = context
-    @comments = @context.comments.paginate(page: params[:page]).order(created_at: :asc)
-    @context.increment_view
-  end
-
-  def new
-    @context = context
-    @comment = @context.comments.build
-  end
 
   def create
     @context = context
@@ -58,7 +47,7 @@ class CommentsController < ApplicationController
     # Redirect based on context.
     def context_url(context)
       if Topic === context
-        topic_comments_path(context)
+        topic_path(context)
       elsif Log === context
         log_path(context)
       end

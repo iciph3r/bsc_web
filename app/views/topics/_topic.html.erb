@@ -2,7 +2,7 @@
   <h2>
     <%= icon('thumb-tack fa-fw') if topic.sticky? %>
     <%= hidden(topic.hidden?) %>
-    <%= link_to(topic.title, topic_comments_path(topic)) %>
+    <%= link_to(topic.title, topic_path(topic)) %>
     <%= bsc_only(topic.bsc?) %>
   </h2>
   <%= show_time_stamp(topic.created_at) %>
