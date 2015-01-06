@@ -1,6 +1,6 @@
 <section class="comment">
   <header class="header">
-    <h2><%= comment.user.name %>:</h2>
+    <h1><%= comment.user.name %>:</h1>
     <span class="pull-right">
       <%= link_to(icon('edit', 'Edit'),
           polymorphic_path([comment.commentable, comment],

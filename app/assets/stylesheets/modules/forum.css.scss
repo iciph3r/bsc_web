@@ -25,12 +25,6 @@
 
 .comment {
   @extend %box;
-  p {
-    margin: 0;
-  }
-  p + p {
-    margin-top: 1em;
-  }
   header {
     border-bottom: 1px solid $global_border_color;
     margin-bottom: 5px;
@@ -40,6 +34,12 @@
     color: $global_font_background_color;
     font-size: .8em;
     margin-top: 5px;
+  }
+  h1 {
+    border: 0;
+    display: inline-block;
+    font-size: $global_font_size;
+    margin: 0;
   }
 }
 
