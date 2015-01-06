@@ -3,20 +3,25 @@ class TopicsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    if !current_user || current_user.user?
+    if !current_user
       @topics = Topic.all_users
                      .includes(:comments)
                      .paginate(page: params[:page])
                      .order('comments.created_at DESC')
-    elsif current_user.bsc?
-      @topics = Topic.includes(:comments).paginate(page: params[:page])
+    elsif current_user
+      level = User.levels[current_user.level]
+      @topics = Topic.where('level <= ?', level)
+                     .includes(:comments)
+                     .paginate(page: params[:page])
                      .order('comments.created_at DESC')
     end
   end
 
   def show
     @topic = Topic.find(params[:id])
-    if @topic.bsc? && current_user.user?
+    topic_level = Topic.levels[@topic.level]
+    user_level = get_user_level
+    if topic_level > user_level
       redirect_to topics_path, alert: 'Unauthorized to view.'
     else
       @comments = @topic.comments.paginate(page: params[:page])
@@ -69,5 +74,13 @@ class TopicsController < ApplicationController
       topic = Topic.find(params[:id])
       m = 'You may only edit your own topics.'
       redirect_to(topic_path(topic), alert: m) unless current_user?(topic.user)
+    end
+
+    def get_user_level
+      if current_user
+        User.levels[current_user.level]
+      else
+        0
+      end
     end
 end
