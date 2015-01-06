@@ -27,7 +27,7 @@ class TopicsControllerTest < ActionController::TestCase
   end
 
   test 'should redirect update when not logged in' do
-    patch :update, id: @topic, topic: { title: @topic.title, bsc_only: true }
+    patch :update, id: @topic, topic: { title: @topic.title }
     assert_not flash.empty?
     assert_redirected_to login_url
   end

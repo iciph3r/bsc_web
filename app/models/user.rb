@@ -24,6 +24,14 @@ class User < ActiveRecord::Base
   enum level: [:user, :bn, :bsc, :admin]
   enum status: [:inactive, :active, :locked]
 
+  def name
+    self[:name].humanize
+  end
+
+  def bsc?
+    self[:status] == 'bsc' || 'admin'
+  end
+
   ### Authentication methods.
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

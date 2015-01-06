@@ -25,7 +25,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     get edit_password_reset_path(user.reset_token, email: '')
     assert_redirected_to root_url
     # Inactive user:
-    user.active!
+    user.inactive!
     get edit_password_reset_path(user.reset_token, email: user.email)
     assert_redirected_to root_url
     user.active!

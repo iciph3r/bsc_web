@@ -22,7 +22,7 @@ class UserPostsTopicTest < ActionDispatch::IntegrationTest
     get new_topic_path
     assert_template 'topics/new'
     assert_difference 'Topic.count', 1 do
-      post topics_path, topic: { title: 'Hi', bsc_only: true,
+      post topics_path, topic: { title: 'Hi', level: :bsc,
                                  comments_attributes: [{ content: 'Lorem' }] }
     end
     assert_redirected_to topic_path(assigns(:topic))

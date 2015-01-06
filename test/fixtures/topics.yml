@@ -3,26 +3,27 @@
 one:
   user: admin
   title: Stupid Elves!
-  level: bsc
+  level: 2
 
 two:
   user: bsc_user
   title: Orcs!
-  level: bsc
+  level: 1
 
 sticky:
   user: bsc_user
   title: Title!
   sticky: true
+  level: 0
 
 non_bsc:
   user: user
   title: Title!
-  level: public
+  level: 0
 
 <% (3..55).each do |n| %>
 topic_<%= n %>:
   user: admin
   title: Lorem Ipsum
-  level: public
+  level: 0
 <% end %>

@@ -3,19 +3,20 @@ class TopicsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    if !current_user || !current_user.bsc?
-      @topics = Topic.includes(:comments)
+    if !current_user || current_user.user?
+      @topics = Topic.all_users
+                     .includes(:comments)
                      .paginate(page: params[:page])
                      .order('comments.created_at DESC')
     elsif current_user.bsc?
-      @topics = Topic.bsc.includes(:comments).paginate(page: params[:page])
+      @topics = Topic.includes(:comments).paginate(page: params[:page])
                      .order('comments.created_at DESC')
     end
   end
 
   def show
     @topic = Topic.find(params[:id])
-    if @topic.bsc? && !current_user.bsc?
+    if @topic.bsc? && current_user.user?
       redirect_to topics_path, alert: 'Unauthorized to view.'
     else
       @comments = @topic.comments.paginate(page: params[:page])
@@ -56,9 +57,9 @@ class TopicsController < ApplicationController
   private
     def topic_params
       if current_user.admin?
-        params.require(:topic).permit(:title, :bsc, :sticky, comments_attributes: [:content])
+        params.require(:topic).permit(:title, :level, :sticky, comments_attributes: [:content])
       elsif current_user.bsc?
-        params.require(:topic).permit(:title, :bsc, comments_attributes: [:content])
+        params.require(:topic).permit(:title, :level, comments_attributes: [:content])
       else
         params.require(:topic).permit(:title, comments_attributes: [:content])
       end

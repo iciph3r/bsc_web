@@ -54,7 +54,7 @@ class LogsController < ApplicationController
 
   private
     def log_params
-      params.require(:log).permit(:title, :description, :bsc)
+      params.require(:log).permit(:title, :description, :level)
     end
 
     def correct_user

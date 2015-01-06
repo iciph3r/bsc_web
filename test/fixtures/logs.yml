@@ -5,7 +5,7 @@ bsc_only:
   path: Admin_testlog.log
   user: admin
   view_count: 1
-  level: bsc
+  level: 2
   description: Lorem Ipsum Logem!
 
 normal_log:
