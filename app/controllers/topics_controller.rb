@@ -15,8 +15,12 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @comments = @topic.comments.paginate(page: params[:page])
-    @topic.increment_view
+    if @topic.bsc? && !current_user.bsc?
+      redirect_to topics_path, alert: 'Unauthorized to view.'
+    else
+      @comments = @topic.comments.paginate(page: params[:page])
+      @topic.increment_view
+    end
   end
 
   def new
