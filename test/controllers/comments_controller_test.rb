@@ -26,11 +26,4 @@ class CommentsControllerTest < ActionController::TestCase
     assert_not flash.empty?
     assert_redirected_to root_url
   end
-
-  test 'view count is incremented when someone views a thread' do
-    assert_difference '@topic.view_count', 1 do
-      get :index, topic_id: @topic
-      @topic.reload
-    end
-  end
 end

@@ -28,7 +28,7 @@ class TopicsController < ApplicationController
     @topic = current_user.topics.build(topic_params)
     @topic.comments.first.user_id = current_user.id
     if @topic.save
-      redirect_to topic_comments_path(@topic)
+      redirect_to topic_path(@topic)
     else
       render 'new'
     end
@@ -43,7 +43,7 @@ class TopicsController < ApplicationController
     if @topic.update_attributes(topic_params)
       @topic.decrement_view  # Do not count update as a view.
       flash[:notice] = 'Topic successfully updated.'
-      redirect_to topic_comments_path(@topic)
+      redirect_to topic_path(@topic)
     else
       render 'edit'
     end
@@ -63,7 +63,6 @@ class TopicsController < ApplicationController
     def correct_user
       topic = Topic.find(params[:id])
       m = 'You may only edit your own topics.'
-      redirect_to(topic_comments_path(topic),
-                  alert: m) unless current_user?(topic.user)
+      redirect_to(topic_path(topic), alert: m) unless current_user?(topic.user)
     end
 end

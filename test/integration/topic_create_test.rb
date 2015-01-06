@@ -25,6 +25,6 @@ class UserPostsTopicTest < ActionDispatch::IntegrationTest
       post topics_path, topic: { title: 'Hi', bsc_only: true,
                                  comments_attributes: [{ content: 'Lorem' }] }
     end
-    assert_redirected_to topic_comments_path(assigns(:topic))
+    assert_redirected_to topic_path(assigns(:topic))
   end
 end
