@@ -12,9 +12,9 @@ module ApplicationHelper
 
   def display_flash(message)
     if flash[:notice]
-      "#{icon('info-circle', message)}".html_safe
+      "#{icon('info-circle fa-fw', message)}".html_safe
     elsif flash[:alert]
-      "#{icon('exclamation-triangle', message)}".html_safe
+      "#{icon('exclamation-triangle fa-fw', message)}".html_safe
     end
   end
 
