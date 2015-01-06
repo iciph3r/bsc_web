@@ -3,7 +3,7 @@ class LogsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @logs = Log.all
+    @logs = Log.paginate(page: params[:page])
   end
 
   def show

@@ -1,19 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+bsc_only:
+  title: BSC Only Log
+  path: Admin_testlog.log
+  user: admin
+  view_count: 1
+  bsc: true
+  hidden: false
+  description: Lorem Ipsum Logem!
+
+normal_log:
   title: MyString
-  path: MyString
-  user_id: 
+  path: Admin_testlog.log
+  user: admin
   view_count: 1
   bsc: false
   hidden: false
   description: MyString
 
-two:
-  title: MyString
-  path: MyString
-  user_id: 
-  view_count: 1
-  bsc: false
-  hidden: false
-  description: MyString
+<% (1..35).each do |n| %>
+log_<%= n %>:
+  title: Log number <%= n %>
+  path: Admin_testlog.log
+  user: admin
+  description: Lorem Ipsum Logem!
+<% end %>
