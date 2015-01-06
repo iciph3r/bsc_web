@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_blank: true
 
+  enum level: [:user, :bn, :bsc, :admin]
+  enum status: [:inactive, :active, :locked]
+
   ### Getter methods
   def name
     read_attribute(:name).humanize
