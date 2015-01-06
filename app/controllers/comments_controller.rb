@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
     @comment.update_attributes(comment_params)
     if @comment.save
       redirect_to context_url(@context), notice: 'Update success.'
+      @context.decrement_view
     else
       render 'edit'
     end
