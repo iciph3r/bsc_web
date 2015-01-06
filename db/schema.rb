@@ -33,21 +33,21 @@ ActiveRecord::Schema.define(version: 20150106195418) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "log_level",   default: 0
-    t.integer  "log_status",  default: 1
+    t.integer  "level",       default: 0
+    t.integer  "status",      default: 1
   end
 
   add_index "logs", ["user_id"], name: "index_logs_on_user_id"
 
   create_table "topics", force: true do |t|
     t.string   "title"
-    t.integer  "view_count",   default: 0
-    t.boolean  "sticky",       default: false
+    t.integer  "view_count", default: 0
+    t.boolean  "sticky",     default: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "topic_level",  default: 0
-    t.integer  "topic_status", default: 1
+    t.integer  "level",      default: 0
+    t.integer  "status",     default: 1
   end
 
   add_index "topics", ["user_id"], name: "index_topics_on_user_id"
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 20150106195418) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
-    t.integer  "account_level",     default: 0
-    t.integer  "account_status",    default: 0
+    t.integer  "level",             default: 0
+    t.integer  "status",            default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
