@@ -17,11 +17,11 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :topics, except: :destroy
   resources :topics do
-    resources :comments, only: [:create, :edit, :update]
+    resources :comments, only: [:new, :create, :edit, :update]
   end
   resources :logs, except: :destroy
   resources :logs do
-    resources :comments, only: [:create, :edit, :update]
+    resources :comments, only: [:new, :create, :edit, :update]
   end
 
   namespace :admin do
