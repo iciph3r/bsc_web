@@ -8,13 +8,10 @@ class Topic < ActiveRecord::Base
   validates :view_count, presence: true,
             numericality: { greater_than_or_equal_to: 0 }
 
-  default_scope -> { where(hidden: false) }
-  scope :not_bsc, -> { where(bsc: false) }
-  scope :bsc_only, -> { where(bsc: true) }
   scope :sticky, -> { where(sticky: true) }
   scope :not_sticky, -> { where(sticky: false) }
 
-  enum level: [:public, :bn, :bsc, :admin]
+  enum level: [:all_users, :bn, :bsc, :admin]
   enum status: [:hidden, :open, :locked]
 
   def increment_view

@@ -3,12 +3,12 @@
 one:
   user: admin
   title: Stupid Elves!
-  bsc: true
+  level: bsc
 
 two:
   user: bsc_user
   title: Orcs!
-  bsc: true
+  level: bsc
 
 sticky:
   user: bsc_user
@@ -18,11 +18,11 @@ sticky:
 non_bsc:
   user: user
   title: Title!
-  bsc: false
+  level: public
 
 <% (3..55).each do |n| %>
 topic_<%= n %>:
   user: admin
   title: Lorem Ipsum
-  bsc: false
+  level: public
 <% end %>

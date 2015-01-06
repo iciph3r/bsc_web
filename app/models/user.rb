@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   ### Getter methods
   def name
-    read_attribute(:name).humanize
+    self.name.humanize
   end
 
   ### Authentication methods.

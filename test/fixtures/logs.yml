@@ -5,8 +5,7 @@ bsc_only:
   path: Admin_testlog.log
   user: admin
   view_count: 1
-  bsc: true
-  hidden: false
+  level: bsc
   description: Lorem Ipsum Logem!
 
 normal_log:
@@ -14,8 +13,6 @@ normal_log:
   path: Admin_testlog.log
   user: admin
   view_count: 1
-  bsc: false
-  hidden: false
   description: MyString
 
 <% (1..35).each do |n| %>

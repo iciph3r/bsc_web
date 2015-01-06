@@ -4,12 +4,12 @@ class TopicsController < ApplicationController
 
   def index
     if !current_user || !current_user.bsc?
-      @topics = Topic.not_bsc.includes(:comments)
+      @topics = Topic.includes(:comments)
                      .paginate(page: params[:page])
                      .order('comments.created_at DESC')
     elsif current_user.bsc?
-    @topics = Topic.includes(:comments).paginate(page: params[:page])
-                   .order('comments.created_at DESC')
+      @topics = Topic.bsc.includes(:comments).paginate(page: params[:page])
+                     .order('comments.created_at DESC')
     end
   end
 
