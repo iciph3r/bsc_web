@@ -9,10 +9,8 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find(params[:id])
-    topic_level = Topic.levels[@topic.level]
-    user_level = get_user_level
-    if topic_level > user_level
+    @topic = Topic.find(params[:id]) 
+    if Topic.levels[@topic.level] > get_user_level
       redirect_to topics_path, alert: 'Unauthorized to view.'
     else
       @comments = @topic.comments.paginate(page: params[:page])
