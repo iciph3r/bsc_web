@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find(params[:id]) 
+    @topic = Topic.find(params[:id])
     if Topic.levels[@topic.level] > get_user_level
       redirect_to topics_path, alert: 'Unauthorized to view.'
     else
@@ -41,8 +41,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     if @topic.update_attributes(topic_params)
       @topic.decrement_view  # Do not count update as a view.
-      flash[:notice] = 'Topic successfully updated.'
-      redirect_to topic_path(@topic)
+      redirect_to topic_path(@topic), notice: 'Topic successfully updated.'
     else
       render 'edit'
     end

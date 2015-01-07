@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       redirect_to context_url(@context)
+      @context.decrement_view
     else
       render 'new'
     end
