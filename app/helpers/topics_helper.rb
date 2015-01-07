@@ -2,13 +2,13 @@ module TopicsHelper
   def topic_level(topic)
     case Topic.levels[topic.level]
     when 0
-      'Public Discussions'
+      'Public'
     when 1
-      'BN Only Discussions'
+      'BN Only'
     when 2
-      'BSC Only Discussions'
+      'BSC Only'
     when 3
-      'Admin Only Discussions'
+      'Admin Only'
     end
   end
 end

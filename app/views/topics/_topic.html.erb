@@ -5,7 +5,8 @@
   </h2>
   <%= show_time_stamp(topic.created_at) %>
   <div class="author">
-    <strong><%= topic.user.name %></strong> <%= topic_level(topic) %>
+    <strong><%= topic.user.name %></strong>
+    [<%= topic_level(topic) %> Discussions]
   </div>
   <div class="stats">
     Viewed <%= pluralize(topic.view_count, 'time') %>.
