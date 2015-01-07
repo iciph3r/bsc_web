@@ -5,8 +5,7 @@ class TopicsController < ApplicationController
   def index
     @topics = Topic.level(get_user_level).includes(:comments)
                    .paginate(page: params[:page], per_page: 10)
-                   .order('topics.sticky DESC')
-                   .order('comments.created_at DESC')
+                   .order('topics.sticky DESC', 'comments.created_at DESC')
   end
 
   def show
