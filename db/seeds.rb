@@ -10,10 +10,17 @@ User.create!(name: 'patience',
              email: 'patience@bsc.bsc',
              password: 'password',
              password_confirmation: 'password',
-             activated: true,
+             status: 'active',
              activated_at: Time.now,
-             admin: true,
-             bsc: true)
+             level: 'admin')
+
+User.create!(name: 'bscuser',
+             email: 'bscuser@bsc.bsc',
+             password: 'password',
+             password_confirmation: 'password',
+             status: 'active',
+             activated_at: Time.now,
+             level: 'bsc')
 
 ('a'..'cv').each do |postfix|
   name = "bscuser#{postfix}"
@@ -23,7 +30,7 @@ User.create!(name: 'patience',
                email: email,
                password: password,
                password_confirmation: password,
-               activated: true,
+               status: 'active',
                activated_at: Time.now,
-               admin: false)
+               level: 'user')
 end

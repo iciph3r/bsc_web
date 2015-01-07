@@ -21,9 +21,15 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_blank: true
 
-  ### Getter methods
+  enum level: [:user, :bn, :bsc, :admin]
+  enum status: [:inactive, :active, :locked]
+
   def name
-    read_attribute(:name).humanize
+    self[:name].humanize
+  end
+
+  def bsc?
+    self[:status] == 'bsc' || 'admin'
   end
 
   ### Authentication methods.
@@ -45,8 +51,7 @@ class User < ActiveRecord::Base
 
   ### Activate account.
   def activate
-    update_columns(activated: true,
-                   activated_at: Time.now)
+    update_columns(status: 1, activated_at: Time.now)
   end
 
   def send_activation_email

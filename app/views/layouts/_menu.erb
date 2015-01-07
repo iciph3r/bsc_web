@@ -16,22 +16,9 @@
   </li>
 <% else %>
   <li>
-    <%= link_to(login_path) do %>
-      <%= icon('fw', 'Log In') %>
-      <%= icon('caret-down fa-fw') %>
+    <%= link_to(login_path(url: request.original_url)) do %>
+      <%= icon('sign-in fw', 'Log In') %>
     <% end %>
-    <ul>
-      <fieldset class="form login-bar">
-        <legend>BSC Login</legend>
-        <%= form_for(:session, url: login_path) do |f| %>
-          <li><%= f.text_field :name, placeholder: 'Username' %></li>
-          <li><%= f.password_field :password, placeholder: 'Password' %></li>
-          <li><%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
-            <%= icon('sign-in', 'Log in') %>
-          <% end %></li>
-        <% end %>
-      </fieldset>
-    </ul>
   </li>
 <% end %>
 </ul>

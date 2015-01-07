@@ -3,13 +3,15 @@ class LogsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @logs = Log.paginate(page: params[:page])
+    @logs = Log.level(get_user_level).includes(:comments)
+               .paginate(page: params[:page])
+               .order('comments.created_at DESC')
   end
 
   def show
     @log = Log.find(params[:id])
-    if @log.bsc? && !current_user.bsc?
-      redirect_to logs_path, alert: 'Unauthorzed!'
+    if Log.levels[@log.level] > get_user_level
+      redirect_to topics_path, alert: 'Unauthorized to view.'
     else
       @log_text = File.read(Rails.root.join('public', 'logs', @log.path))
       @comments = @log.comments.paginate(page: params[:page])
@@ -23,7 +25,7 @@ class LogsController < ApplicationController
 
   def create
     @log = current_user.logs.build(log_params)
-    if params[:log][:log_file]
+    if params[:log][:logfile]
       @log.path = "#{current_user.name}_#{Time.now.strftime('%F_%T')}.log"
     else
       @log.errors.add(:base, 'Must select a log to upload.')
@@ -54,12 +56,16 @@ class LogsController < ApplicationController
 
   private
     def log_params
-      params.require(:log).permit(:title, :description, :bsc)
+      params.require(:log).permit(:title, :description, :level)
     end
 
     def correct_user
       log = Log.find(params[:id])
       m = 'You may only edit your own logs.'
       redirect_to(log_path(log), alert: m) unless current_user?(log.user)
+    end
+
+    def get_user_level
+      current_user ? User.levels[current_user.level] : 0
     end
 end

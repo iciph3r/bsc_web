@@ -5,14 +5,13 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(name: params[:session][:name].downcase)
     if user && user.authenticate(params[:session][:password])
-      if user.activated?
+      if user.active?
         log_in user
-        redirect_back_or user
+        redirect_back_or(params[:url].blank? ? user : params[:url])
       else
         message = 'Account not activated. '
         message += 'Check your email for the activation link.'
-        flash[:alert] = message
-        redirect_to root_url
+        redirect_to root_url, alert: message
       end
     else
       flash.now[:alert] = 'Invalid username/password combination'
@@ -22,7 +21,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    redirect_to root_url
-    flash[:notice] = 'You have logged out.'
+    redirect_to root_url, notice: 'You have logged out.'
   end
 end

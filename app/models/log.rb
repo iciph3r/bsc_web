@@ -9,6 +9,11 @@ class Log < ActiveRecord::Base
   validates :view_count, presence: true,
             numericality: { greater_than_or_equal_to: 0 }
 
+  scope :level, ->(user_level) { where('level <= ?', user_level) }
+
+  enum level: [:all_users, :bn, :bsc, :admin]
+  enum status: [:hidden, :open, :locked]
+
   def increment_view
     self.increment!(:view_count, by = 1)
   end

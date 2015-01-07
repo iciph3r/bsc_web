@@ -4,25 +4,23 @@ admin:
   name: admin
   email: admin@example.bsc
   password_digest: <%= User.digest('password') %>
-  activated: true
+  status: 1
   activated_at: <%= Time.now %>
-  admin: true
-  bsc: true
+  level: 3
 
 bsc_user:
   name: bscuser
   email: bsc@example.bsc
   password_digest: <%= User.digest('password') %>
-  activated: true
+  status: 1
   activated_at: <%= Time.now %>
-  admin: false
-  bsc: true
+  level: 2
 
 user:
   name: regularuser
   email: user@example.bsc
   password_digest: <%= User.digest('password') %>
-  activated: true
+  status: 1
   activated_at: <%= Time.now %>
 
 <% ('a'..'aj').each do |postfix| %>
@@ -30,6 +28,6 @@ bscuser<%= postfix %>:
   name: bscuser<%= postfix %>
   email: bscuser<%= postfix %>@example.bsc
   password_digest: <%= User.digest('password') %>
-  activated: true
+  status: 1
   activated_at: <%= Time.now %>
 <% end %>

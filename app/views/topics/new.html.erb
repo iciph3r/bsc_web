@@ -13,9 +13,9 @@
       <%= f.text_field :title %>
 
       <% if current_user.bsc? %>
-        <%= f.label :bsc, 'Topic Visibility:' %>
-        <%= f.select :bsc, [['For Everyone to View/Comment', false],
-                            ['For BSC Members Only', true]] %>
+        <%= f.label :level, 'Topic Visibility:' %>
+        <%= f.select :level, [['For Everyone to View/Comment', 'all_users'],
+                              ['For BSC Members Only', 'bsc']] %>
       <% end %>
 
       <% if current_user.admin? %>

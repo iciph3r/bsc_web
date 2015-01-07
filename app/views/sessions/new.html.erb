@@ -18,6 +18,8 @@
       <%= button_tag type: 'submit', name: 'commit', class: 'btn' do %>
         <%= icon('sign-in', 'Log in') %>
       <% end %>
+      
+      <%= hidden_field_tag :url, params[:url] %>
     <% end %>
     <br />
     <span class="center">

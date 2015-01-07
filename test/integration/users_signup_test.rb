@@ -29,7 +29,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_equal 1, ActionMailer::Base.deliveries.size
     user = assigns(:user)
-    assert_not user.activated?
+    assert_not user.active?
     log_in_as(user)
     assert_not is_logged_in?
     get edit_account_path('invalid token')
@@ -37,7 +37,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     get edit_account_path(user.activation_token, email: 'wrong')
     assert_not is_logged_in?
     get edit_account_path(user.activation_token, email: user.email)
-    user.reload.activated?
+    user.reload.active?
     follow_redirect!
     assert_template 'users/show'
     assert is_logged_in?
