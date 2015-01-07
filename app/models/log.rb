@@ -21,4 +21,14 @@ class Log < ActiveRecord::Base
   def decrement_view
     self.decrement!(:view_count, by = 1)
   end
+
+  def self.save_log(log_file, log)
+    File.open(Rails.root.join('public', 'logs', log.path), 'wb') do |file|
+      file.write(log_file.read)
+    end
+  end
+
+  def self.read_log(log)
+    File.read(Rails.root.join('public', 'logs', log.path))
+  end
 end

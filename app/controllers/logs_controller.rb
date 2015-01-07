@@ -13,7 +13,7 @@ class LogsController < ApplicationController
     if Log.levels[@log.level] > get_user_level
       redirect_to topics_path, alert: 'Unauthorized to view.'
     else
-      @log_text = File.read(Rails.root.join('public', 'logs', @log.path))
+      @log_text = Log.read_log(@log)
       @comments = @log.comments.paginate(page: params[:page])
       @log.increment_view
     end
@@ -25,16 +25,12 @@ class LogsController < ApplicationController
 
   def create
     @log = current_user.logs.build(log_params)
-    if params[:log][:logfile]
-      @log.path = "#{current_user.name}_#{Time.now.strftime('%F_%T')}.log"
-    else
-      @log.errors.add(:base, 'Must select a log to upload.')
+    if params[:log][:log_file]
+      @log.path = "#{current_user.name}_#{Time.now.utc.strftime('%FT%TZ')}.log"
     end
     if @log.save
-      File.open(Rails.root.join('public', 'logs', @log.path), 'wb') do |file|
-        file.write(params[:log][:log_file].read)
-      end
-      redirect_to logs_path, notice: 'Log successfully uploaded.'
+      Log.save_log(params[:log][:log_file], @log)
+      redirect_to log_path(@log), notice: 'Log successfully uploaded.'
     else
       render 'new'
     end
