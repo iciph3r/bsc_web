@@ -16,7 +16,7 @@
   </li>
 <% else %>
   <li>
-    <%= link_to(login_path) do %>
+    <%= link_to(login_path(url: request.original_url)) do %>
       <%= icon('fw', 'Log In') %>
       <%= icon('caret-down fa-fw') %>
     <% end %>
