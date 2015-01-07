@@ -1,6 +1,4 @@
 <h3>Forum</h3>
 <% if logged_in? %>
   <%= link_to('New Topic', new_topic_path) %>
-<% else %>
-  <%= link_to('Log In to Post', login_path) %>
 <% end %>

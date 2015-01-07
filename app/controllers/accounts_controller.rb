@@ -5,8 +5,8 @@ class AccountsController < ApplicationController
     if user && user.inactive? && user.authenticated?(:activation, params[:id])
       user.activate
       log_in user
-      flash[:notice] = 'Account Activated!'
-      redirect_to user  # Later, allow them to go to settings.
+      redirect_to edit_user_path(user), notice: 'Account activated,
+                                                 please set your timezone'
     else
       redirect_to root_url, alert: 'Invalid activation link.'
     end
