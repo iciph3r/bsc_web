@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  around_action :set_time_zone
   include SessionsHelper
 
   private
@@ -14,5 +15,10 @@ class ApplicationController < ActionController::Base
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url, alert: 'Nope :(') unless current_user?(@user)
+    end
+
+    def set_time_zone(&block)
+      time_zone = current_user.try(:timezone) || 'UTC'
+      Time.use_zone(time_zone, &block)
     end
 end
