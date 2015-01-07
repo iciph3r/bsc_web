@@ -20,9 +20,9 @@
       <%= @log_text %>
     </pre>
   </section>
-  <% if @log.comments.any? %>
+  <% if @comments.any? %>
       <%= render partial: 'shared/comment',
-                 collection: @log.comments %>
+                 collection: @comments %>
   <% end %>
   <%= will_paginate @comments %>
   <% if logged_in? %>
