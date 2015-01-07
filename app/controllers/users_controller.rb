@@ -44,7 +44,8 @@ class UsersController < ApplicationController
 
     def user_params
       if params[:action] == 'update'
-        params.require(:user).permit(:email, :password, :password_confirmation)
+        params.require(:user).permit(:email, :password,
+                                     :password_confirmation, :timezone)
       else
         params.require(:user).permit(:name, :email, :password,
                                      :password_confirmation)

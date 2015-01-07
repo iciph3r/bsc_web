@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106195418) do
+ActiveRecord::Schema.define(version: 20150107221004) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150106195418) do
     t.datetime "reset_sent_at"
     t.integer  "level",             default: 0
     t.integer  "status",            default: 0
+    t.string   "timezone"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
