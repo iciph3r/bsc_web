@@ -3,18 +3,9 @@ class TopicsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    if !current_user
-      @topics = Topic.all_users
-                     .includes(:comments)
-                     .paginate(page: params[:page])
-                     .order('comments.created_at DESC')
-    elsif current_user
-      level = User.levels[current_user.level]
-      @topics = Topic.where('level <= ?', level)
-                     .includes(:comments)
-                     .paginate(page: params[:page])
-                     .order('comments.created_at DESC')
-    end
+    @topics = Topic.level(get_user_level).includes(:comments)
+                   .paginate(page: params[:page])
+                   .order('comments.created_at DESC')
   end
 
   def show
@@ -77,10 +68,6 @@ class TopicsController < ApplicationController
     end
 
     def get_user_level
-      if current_user
-        User.levels[current_user.level]
-      else
-        0
-      end
+      current_user ? User.levels[current_user.level] : 0
     end
 end

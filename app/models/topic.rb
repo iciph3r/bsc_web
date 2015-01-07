@@ -10,6 +10,7 @@ class Topic < ActiveRecord::Base
 
   scope :sticky, -> { where(sticky: true) }
   scope :not_sticky, -> { where(sticky: false) }
+  scope :level, ->(user_level) { where('level <= ?', user_level) }
 
   enum level: [:all_users, :bn, :bsc, :admin]
   enum status: [:hidden, :open, :locked]
