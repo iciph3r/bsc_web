@@ -1,12 +1,12 @@
 <section class="topic">
   <h2>
     <%= icon('thumb-tack fa-fw') if topic.sticky? %>
-    <%= hidden(topic.hidden?) %>
     <%= link_to(topic.title, topic_path(topic)) %>
-    <%= bsc_only(topic.bsc?) %>
   </h2>
   <%= show_time_stamp(topic.created_at) %>
-  <div class="author">By <strong><%= topic.user.name %></strong></div>
+  <div class="author">
+    <strong><%= topic.user.name %></strong> <%= topic_level(topic) %>
+  </div>
   <div class="stats">
     Viewed <%= pluralize(topic.view_count, 'time') %>.
     <% if topic.comments.any? %>
