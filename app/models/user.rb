@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def bsc?
-    self[:status] == 'bsc' || 'admin'
+    self[:level] == 'bsc' || 'admin'
   end
 
   ### Authentication methods.

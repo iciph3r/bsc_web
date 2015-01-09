@@ -9,13 +9,15 @@
   </header>
   <%= log.description %>
   <div class="stats">
-    Viewed <%= pluralize(log.view_count, 'time') %>.
     <% if log.comments.any? %>
       Last comment <%= time_ago_in_words(log.comments.first.created_at) %> ago
       by <%= log.comments.first.user.name %>.
+    <% else %>
+&nbsp;
     <% end %>
     <span class="pull-right">
-      <%= pluralize(log.comments.size, 'comment') %>.
+      <%= pluralize(log.comments.size, 'comment') %>,
+      <%= pluralize(log.view_count, 'views') %>
     </span>
   </div>
 </section>

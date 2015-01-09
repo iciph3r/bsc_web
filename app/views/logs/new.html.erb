@@ -5,6 +5,11 @@
 
 <section class="log box">
   <h1>Upload a Log</h1>
+  <p>
+    If you want your comments marked up or styled, please use the '#'
+    character at the beginning of the line.
+  </p>
+  <br />
   <fieldset class="form">
     <legend>New Log Form</legend>
     <%= form_for @log do |f| %>
@@ -15,6 +20,12 @@
 
       <%= f.label :description %>
       <%= f.text_field :description %>
+
+      <% if current_user.bsc? %>
+        <%= f.label :level, 'Log Visibility:' %>
+        <%= f.select :level, [['For Everyone to View/Comment', 'all_users'],
+                              ['For BSC Members Only', 'bsc']] %>
+      <% end %>
 
       <%= f.label :log_file, 'Log file' %>
       <%= f.file_field :log_file %>

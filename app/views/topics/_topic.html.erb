@@ -16,7 +16,7 @@
       by <%= topic.comments.first.user.name %>.
     <% end %>
     <span class="pull-right">
-      <%= pluralize(topic.comments.size, 'reply') %>,
+      <%= pluralize(topic.comments.size, 'comment') %>,
       <%= pluralize(topic.view_count, 'view') %>
     </span>
   </div>

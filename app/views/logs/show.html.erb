@@ -1,5 +1,5 @@
 <% provide(:title, @log.title) %>
-<%= content_for :navigation do %>
+<% content_for :navigation do %>
   <%= render 'log_nav' %>
 <% end %>
 
@@ -11,14 +11,14 @@
                   edit_log_path(@log)) if current_user?(@log.user) %>
     </span>
     <div class="author">
-      Posted by <strong><%= @log.user.name %></strong> on
-      <%= show_time_stamp @log.created_at %>
+      Submitted by <strong><%= @log.user.name %></strong> on
+      <%= @log.created_at.strftime('%-d %b %Y at %l:%m %p') %>
     </div>
-    Description: <%= @log.description %>
+    <%= @log.description %>
     <hr />
     <pre>
       <% @log_text.each_line do |line| %>
-<%= colorize(line) -%>
+<%= colorize(line).html_safe -%>
       <% end %>
       <% @log_text.close %>
     </pre>

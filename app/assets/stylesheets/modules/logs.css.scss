@@ -33,15 +33,21 @@
     color: #0b0;
   }
   .yellow {
-    color: #0bb;
+    color: #bb0;
   }
   .blue {
     color: #00b;
   }
   .magenta {
     color: #b0b;
+    .enemy {
+      color: #f5f;
+    }
   }
   .cyan {
     color: #0bb;
+    .enemy {
+      color: #5ff;
+    }
   }
 }
