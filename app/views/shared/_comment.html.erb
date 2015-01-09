@@ -1,6 +1,7 @@
 <section class="comment">
   <header class="header">
-    <h1><%= comment.user.name %></h1>
+    <h1><%= comment.user.name %></h1> commented on
+      <%= comment.created_at.strftime('%-d %b %Y %-I:%M %p') %>
     <span class="pull-right">
       <%= link_to(icon('edit', 'Edit'),
           polymorphic_path([comment.commentable, comment],
@@ -8,10 +9,4 @@
     </span>
   </header>
     <%= simple_format comment.content %>
-    <div class="footer">
-      <%= comment.created_at.strftime('Posted: %-d %b %Y %-I:%M %p') %>
-      <% if comment.created_at != comment.updated_at %>
-        <%= comment.updated_at.strftime('& updated: %-d %b %Y %-I:%M %p') %>
-      <% end %>
-    </div>
 </section>

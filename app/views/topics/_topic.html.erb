@@ -1,23 +1,25 @@
 <section class="topic">
-  <header>
+  <div>
     <h2>
       <%= icon('thumb-tack fa-fw') if topic.sticky? %>
       <%= link_to(topic.title, topic_path(topic)) %>
     </h2>
     (<%= topic.user.name %>)
-  <span class="pull-right"><strong>[<%= topic_level(topic) %>]</strong></span>
-  </header>
-  <div class="author">
-    <%= show_time_stamp(topic.created_at) %>
+    <span class="pull-right"><strong>[<%= topic_level(topic) %>]</strong></span>
   </div>
-  <div class="stats">
-    <% if topic.comments.any? %>
-      Last comment <%= time_ago_in_words(topic.comments.first.created_at) %> ago
-      by <%= topic.comments.first.user.name %>.
-    <% end %>
+  <div>
+    Started on <%= topic.created_at.strftime('%-d %b %Y') %>
+  </div>
+  <div>
+    Viewed <%= pluralize(topic.view_count, 'time') %>,
+  <% if topic.comments.size > 1 %>
+    last reply <%= time_ago_in_words(topic.comments.first.created_at) %> ago
+    by <%= topic.comments.first.user.name %>.
+  <% else %>
+    no replies.
+  <% end %>
     <span class="pull-right">
-      <%= pluralize(topic.comments.size, 'comment') %>,
-      <%= pluralize(topic.view_count, 'view') %>
+  <%= pluralize(topic.comments.size - 1, 'reply') if topic.comments.size > 1 %>
     </span>
   </div>
 </section>

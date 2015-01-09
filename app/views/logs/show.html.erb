@@ -5,15 +5,31 @@
 
 <article>
   <section class="log box">
-    <h1><%= @log.title %></h1>
+    <h1>
+      <%= @log.title %>
+      <span class="pull-right">[<%= topic_level(@log) %>]</span>
+    </h1>
     <span class="pull-right">
       <%= link_to(icon('edit', 'Edit'),
                   edit_log_path(@log)) if current_user?(@log.user) %>
     </span>
-    <div class="author">
+    <div>
       Submitted by <strong><%= @log.user.name %></strong> on
-      <%= @log.created_at.strftime('%-d %b %Y at %l:%m %p') %>
+      <%= @log.created_at.strftime('%A %-d %b %Y at %l:%m %p') %>
     </div>
+    <div>
+      Viewed <%= pluralize(@log.view_count, 'time') %>,
+      <% if @comments.any? %>
+      last comment <%= time_ago_in_words(@comments.last.created_at) %> ago
+      by <%= @comments.last.user.name %>.
+      <% else %>
+      no comments.
+      <% end %>
+      <span class="pull-right">
+        <%= pluralize(@comments.size, 'comment') if @comments.any? %>
+      </span>
+    </div>
+    <hr />
     <%= @log.description %>
     <hr />
     <pre>

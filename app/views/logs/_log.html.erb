@@ -1,23 +1,24 @@
 <section class="log">
-  <header>
-    <h2>
-      <%= link_to(log.title, log_path(log)) %>
-    </h2>
-    (<%= log.user.name %>)
-    <%= show_time_stamp(log.created_at) %>
+  <div>
+    <h2><%= link_to(log.title, log_path(log)) %></h2> (<%= log.user.name %>)
     <span class="pull-right"><strong>[<%= topic_level(log) %>]</strong></span>
-  </header>
-  <%= log.description %>
-  <div class="stats">
+  </div>
+  <div>
+    Submitted on <%= log.created_at.strftime('%-d %b %Y') %>
+  </div>
+  <div>
+    <%= log.description %>
+  </div>
+  <div>
+    Viewed <%= pluralize(log.view_count, 'time') %>,
     <% if log.comments.any? %>
-      Last comment <%= time_ago_in_words(log.comments.first.created_at) %> ago
+      last comment <%= time_ago_in_words(log.comments.first.created_at) %> ago
       by <%= log.comments.first.user.name %>.
     <% else %>
-&nbsp;
+      no comments.
     <% end %>
     <span class="pull-right">
-      <%= pluralize(log.comments.size, 'comment') %>,
-      <%= pluralize(log.view_count, 'views') %>
+      <%= pluralize(log.comments.size, 'comment') if log.comments.any? %>
     </span>
   </div>
 </section>
