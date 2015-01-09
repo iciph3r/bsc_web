@@ -5,7 +5,7 @@ class LogsController < ApplicationController
   def index
     @logs = Log.level(get_user_level).includes(:comments)
                .paginate(page: params[:page])
-               .order('comments.created_at DESC')
+               .order('logs.created_at DESC')
   end
 
   def show
