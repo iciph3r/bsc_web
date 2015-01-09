@@ -29,6 +29,6 @@ class Log < ActiveRecord::Base
   end
 
   def self.read_log(log)
-    File.read(Rails.root.join('public', 'logs', log.path))
+    File.open(Rails.root.join('public', 'logs', log.path), 'r')
   end
 end

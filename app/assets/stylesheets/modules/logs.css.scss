@@ -15,4 +15,33 @@
   .form {
     width: 75%;
   }
+  pre {
+    color: #bbb;
+  }
+
+  .enemy {
+    color: #fff;
+    font-weight: bold;
+  }
+  .red {
+    color: #b00;
+    .enemy {
+      color: #f55;
+    }
+  }
+  .green {
+    color: #0b0;
+  }
+  .yellow {
+    color: #0bb;
+  }
+  .blue {
+    color: #00b;
+  }
+  .magenta {
+    color: #b0b;
+  }
+  .cyan {
+    color: #0bb;
+  }
 }
