@@ -8,10 +8,10 @@
     <h1>
       <%= icon('thumb-tack fa-fw') if @topic.sticky? %>
       <%= @topic.title %>
+      [<%= topic_level(@topic) %>]
     </h1>
     <div class="author">
-      <strong><%= @topic.user.name %> </strong>
-      in <%= topic_level(@topic) %>
+      Posted by <strong><%= @topic.user.name %></strong>
       <%= @topic.created_at.strftime('at %-I:%M %p on %A %-d %b %Y') %>
       <span class="pull-right">
         <%= link_to(icon('edit', 'Edit'),
@@ -19,7 +19,6 @@
       </span>
     </div>
     <div class="stats">
-      Viewed <%= pluralize(@topic.view_count, 'time') %>.
       <% if @comments.any? %>
         Last comment <%= time_ago_in_words(@comments.last.created_at) %> ago
         by <%= @comments.last.user.name %>.
@@ -27,7 +26,8 @@
         No comments.
       <% end %>
       <span class="pull-right">
-        <%= pluralize(@comments.size, 'comment') %>.
+        <%= pluralize(@comments.size, 'reply') %>,
+        <%= pluralize(@topic.view_count, 'views') %>
       </span>
     </div>
   </header>

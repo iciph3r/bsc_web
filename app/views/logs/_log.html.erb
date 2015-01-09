@@ -1,11 +1,11 @@
 <section class="log">
   <header>
     <h2>
-      <%# bsc_only(log.bsc?) %>
       <%= link_to(log.title, log_path(log)) %>
     </h2>
     (<%= log.user.name %>)
     <%= show_time_stamp(log.created_at) %>
+    <span class="pull-right"><strong>[<%= topic_level(log) %>]</strong></span>
   </header>
   <%= log.description %>
   <div class="stats">

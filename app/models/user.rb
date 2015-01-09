@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   before_save :prepare
   before_create :create_activation_digest
+  #before_validation :parameterize_name
 
   VALID_NAME_REGEX = /\A[[:alpha:]]+\z/i
   validates :name, presence: true, length: { maximum: 50, minimum: 2 },
@@ -78,10 +79,16 @@ class User < ActiveRecord::Base
       self.email = email.downcase
       self.name = name.downcase
       self.timezone = 'UTC'
+      #self.name = self.original_name
     end
 
     def create_activation_digest
       self.activation_token = User.new_token
       self.activation_digest = User.digest(activation_token)
+    end
+
+    def parameterize_name
+      self.original_name = self.name
+      self.name = name.parameterize
     end
 end

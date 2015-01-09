@@ -39,4 +39,11 @@ class CommentsControllerTest < ActionController::TestCase
     assert_not flash.empty?
     assert_redirected_to @topic
   end
+
+  test 'should not post comment to non-visible topic' do
+    log_in_as(users(:user))
+    assert_no_difference 'Comment.count' do
+      post :create, topic_id: @topic, comment: { content: 'hi!' }
+    end
+  end
 end
