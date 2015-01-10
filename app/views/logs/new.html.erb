@@ -21,10 +21,17 @@
       <%= f.label :description %>
       <%= f.text_field :description %>
 
-      <% if current_user.bsc? %>
+      <% if User.levels[current_user.level] > 0 %>
         <%= f.label :level, 'Log Visibility:' %>
-        <%= f.select :level, [['For Everyone to View/Comment', 'all_users'],
-                              ['For BSC Members Only', 'bsc']] %>
+        <%= f.select :level do %>
+          <% [['Public - All visitors and account holders', 0],
+              ['Private - Trusted account holders', 1],
+              ['BSC Only - Only BSC members', 2],
+              ['Admin Only - Only administrators', 3]].each do |choice| -%>
+            <%= content_tag(:option, choice.first, value: choice.last) \
+                  if User.levels[current_user.level] >= choice.last %>
+          <% end %>
+        <% end %>
       <% end %>
 
       <%= f.label :log_file, 'Log file' %>
