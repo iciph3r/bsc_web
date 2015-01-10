@@ -22,15 +22,11 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_blank: true
 
-  enum level: [:user, :bn, :bsc, :admin]
+  enum level: [:user, :trusted, :bsc, :admin]
   enum status: [:inactive, :active, :locked]
 
   def name
     self[:name].humanize
-  end
-
-  def bsc?
-    self[:level] == 'bsc' || 'admin'
   end
 
   ### Authentication methods.

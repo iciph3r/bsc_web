@@ -4,7 +4,7 @@ module TopicsHelper
     when 0
       'Public'
     when 1
-      'BN Only'
+      'Private'
     when 2
       'BSC Only'
     when 3
