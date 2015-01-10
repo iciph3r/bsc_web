@@ -50,9 +50,11 @@ class TopicsController < ApplicationController
   private
     def topic_params
       if current_user.admin?
-        params.require(:topic).permit(:title, :level, :sticky, comments_attributes: [:content])
-      elsif current_user.bsc?
-        params.require(:topic).permit(:title, :level, comments_attributes: [:content])
+        params.require(:topic).permit(:title, :level, :sticky,
+                                      comments_attributes: [:content])
+      elsif User.levels[current_user.level] > 0
+        params.require(:topic).permit(:title, :level,
+                                      comments_attributes: [:content])
       else
         params.require(:topic).permit(:title, comments_attributes: [:content])
       end

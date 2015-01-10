@@ -12,7 +12,7 @@ class Topic < ActiveRecord::Base
   scope :not_sticky, -> { where(sticky: false) }
   scope :level, ->(user_level) { where('level <= ?', user_level) }
 
-  enum level: [:all_users, :bn, :bsc, :admin]
+  enum level: [:normal_users, :trusted, :bsc, :admin]
   enum status: [:hidden, :open, :locked]
 
   def increment_view

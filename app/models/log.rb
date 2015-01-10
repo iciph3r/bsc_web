@@ -1,4 +1,4 @@
-class Log < ActiveRecord::Base  
+class Log < ActiveRecord::Base
   belongs_to :user
   has_many :comments, as: :commentable
 
@@ -11,7 +11,7 @@ class Log < ActiveRecord::Base
 
   scope :level, ->(user_level) { where('level <= ?', user_level) }
 
-  enum level: [:all_users, :bn, :bsc, :admin]
+  enum level: [:normal_users, :trusted, :bsc, :admin]
   enum status: [:hidden, :open, :locked]
 
   def increment_view

@@ -15,12 +15,12 @@
       <% if User.levels[current_user.level] > 0 %>
         <%= f.label :level, 'Topic Visibility:' %>
         <%= f.select :level do %>
-          <% [['Public - All visitors and account holders', 0],
-              ['Private - Trusted account holders', 1],
-              ['BSC Only - Only BSC members', 2],
-              ['Admin Only - Only administrators', 3]].each do |choice| -%>
+          <% [['Public - All visitors and account holders', 'normal_users'],
+              ['Private - Trusted account holders', 'trusted'],
+              ['BSC Only - Only BSC members', 'bsc'],
+              ['Admin Only - Only administrators', 'admin']].each do |choice| %>
             <%= content_tag(:option, choice.first, value: choice.last) \
-                if User.levels[current_user.level] >= choice.last %>
+                if User.levels[current_user.level] >= User.levels[choice.last] %>
           <% end %>
         <% end %>
       <% end %>

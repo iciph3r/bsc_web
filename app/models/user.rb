@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_blank: true
 
-  enum level: [:user, :trusted, :bsc, :admin]
+  enum level: [:normal_users, :trusted, :bsc, :admin]
   enum status: [:inactive, :active, :locked]
 
   def name
