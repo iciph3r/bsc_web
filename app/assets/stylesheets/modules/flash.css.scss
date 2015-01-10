@@ -8,7 +8,7 @@ $flash_notice: white;
   background-color: $background_color !important;
   border: 1px solid;
   border-radius: $global_border_radius;
-  margin: 5px;
+  margin-top: 10px;
   padding: 5px;
   &.alert {
     border-color: $flash_alert;

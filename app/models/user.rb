@@ -75,7 +75,6 @@ class User < ActiveRecord::Base
       self.email = email.downcase
       self.name = name.downcase
       self.timezone = 'UTC'
-      #self.name = self.original_name
     end
 
     def create_activation_digest
