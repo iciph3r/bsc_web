@@ -28,7 +28,11 @@ class Log < ActiveRecord::Base
     #end
     File.open(Rails.root.join('public', 'logs', log.path), 'wt') do |file|
       IO.foreach(log_file.tempfile) do |line|
-        file.write(line.force_encoding('iso-8859-1').encode('utf-8'))
+        unless line.valid_encoding?
+          file.write(line.force_encoding('iso-8859-1').encode('utf-8'))
+        else
+          file.write(line)
+        end
       end
     end
   end

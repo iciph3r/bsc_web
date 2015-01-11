@@ -1,7 +1,7 @@
 module LogControllerHelper
 
   def colorize(line)
-      line.force_encoding('iso-8859-1').encode!('utf-8').gsub!(/\*[[:alpha:]]+\s.+[[:alpha:]]\*/, %q[<span class="enemy">\0</span>])
+      line.gsub!(/\*[[:alpha:]]+\s.+[[:alpha:]]\*/, %q[<span class="enemy">\0</span>])
       case line
       when /(?<main>^.+ narrates '.+')(?<eol>\r\n|\n|\r)/
         %Q[<span class="yellow">#{$~[:main]}</span>#{$~[:eol]}]
