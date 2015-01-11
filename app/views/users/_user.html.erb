@@ -1,10 +1,8 @@
 <ul>
   <li>
     <%= link_to user.name, user_path(user) %>
-    <%= link_to(icon('edit', 'Edit'),
-                edit_user_path(user)) if current_user?(user) %>
   </li>
   <li><%= user.email %></li>
   <li>Member since <%= user.created_at.strftime('%F') %></li>
-  <li>BSC Member? <%= user.bsc? %></li>
+  <li>Account Level: <%= user.level %></li>
 </ul>

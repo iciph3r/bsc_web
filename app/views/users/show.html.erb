@@ -1,9 +1,23 @@
-<% provide(:title, "#{@user.name}'s User Page".html_safe) %>
+<% provide(:title, "#{@user.name}'s Profile".html_safe) %>
 <% content_for :navigation do %>
   <% render 'users/users_nav' %>
 <% end %>
 
 <section class="users">
-  <h1><%= @user.name %></h1>
-  <%= render @user %>
+  <h1>
+    <%= @user.name %>
+    <span class="pull-right">
+      <%= link_to(icon('edit', 'Edit'),
+                  edit_user_path(@user)) if current_user?(@user) %>
+    </span>
+  </h1>
+  <ul>
+    <li>
+      <%= link_to @user.name, user_path(@user) %>
+    </li>
+    <li><%= @user.email %></li>
+    <li>Member since <%= @user.created_at.strftime('%F') %></li>
+    <li>Account Level: <%= @user.level %></li>
+    <li>Timezone: <%= @user.timezone %></li>
+  </ul>
 </section>

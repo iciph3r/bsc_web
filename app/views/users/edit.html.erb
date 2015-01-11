@@ -20,7 +20,7 @@
       <%= f.password_field :password_confirmation %>
 
       <%= f.label :timezone %>
-      <%= f.time_zone_select :timezone, nil, default: Time.zone.name %>
+      <%= f.time_zone_select :timezone, nil %>
 
       <%= button_tag(type: 'submit', class: 'btn', name: 'commit') do %>
         <%= icon('save fa-fw', 'Save Changes') %>
