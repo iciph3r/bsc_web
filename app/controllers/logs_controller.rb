@@ -3,7 +3,7 @@ class LogsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @logs = Log.level(get_user_level).includes(:comments)
+    @logs = Log.level(get_user_level)
                .paginate(page: params[:page], per_page: 15)
                .order('logs.created_at DESC')
   end
