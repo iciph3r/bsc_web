@@ -32,5 +32,5 @@ User.create!(name: 'bscuser',
                password_confirmation: password,
                status: 'active',
                activated_at: Time.now,
-               level: 'user')
+               level: 'normal_user')
 end
