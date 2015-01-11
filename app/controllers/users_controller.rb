@@ -33,8 +33,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:notice] = 'Settings Updated'
-      redirect_to @user
+      redirect_to @user, notice: 'Settings Updated.'
     else
       render 'edit'
     end
@@ -48,7 +47,7 @@ class UsersController < ApplicationController
                                      :password_confirmation, :timezone)
       else
         params.require(:user).permit(:name, :email, :password,
-                                     :password_confirmation)
+                                     :password_confirmation, :timezone)
       end
     end
 end

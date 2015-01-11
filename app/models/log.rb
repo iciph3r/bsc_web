@@ -10,6 +10,7 @@ class Log < ActiveRecord::Base
             numericality: { greater_than_or_equal_to: 0 }
 
   scope :level, ->(user_level) { where('level <= ?', user_level) }
+  scope :poster, ->(user) { where('user_id = ?', user.id) }
 
   enum level: [:normal_users, :trusted, :bsc, :admin]
   enum status: [:hidden, :open, :locked]
