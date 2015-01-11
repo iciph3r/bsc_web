@@ -23,8 +23,13 @@ class Log < ActiveRecord::Base
   end
 
   def self.save_log(log_file, log)
-    File.open(Rails.root.join('public', 'logs', log.path), 'wb') do |file|
-      file.write(log_file.read)
+    #File.open(Rails.root.join('public', 'logs', log.path), 'wt') do |file|
+    #  file.write(log_file.tidy_bytes)
+    #end
+    File.open(Rails.root.join('public', 'logs', log.path), 'wt') do |file|
+      IO.foreach(log_file.tempfile) do |line|
+        file.write(line.force_encoding('iso-8859-1').encode('utf-8'))
+      end
     end
   end
 
