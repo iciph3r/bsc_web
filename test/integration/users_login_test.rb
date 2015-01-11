@@ -35,4 +35,15 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', logout_path, count: 0
     assert_select 'a[href=?]', user_path(@user), count: 0
   end
+
+  test 'login updates last_login attribute' do
+    get login_path
+    post login_path, session: { name: @user.name, password: 'password' }
+    assert is_logged_in?
+    delete logout_path
+    assert_not_equal @user.last_login, @user.reload.last_login do
+      get login_path
+      post login_path, session: { name: @user.name, password: 'password' }
+    end
+  end
 end
