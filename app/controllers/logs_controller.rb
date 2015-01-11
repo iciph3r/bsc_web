@@ -11,7 +11,7 @@ class LogsController < ApplicationController
   def show
     @log = Log.find(params[:id])
     if Log.levels[@log.level] > get_user_level
-      redirect_to topics_path, alert: 'Unauthorized to view.'
+      redirect_to logs_path, alert: 'Unauthorized to view.'
     else
       @log_text = Log.read_log(@log)
       @comments = @log.comments.paginate(page: params[:page])
@@ -59,9 +59,5 @@ class LogsController < ApplicationController
       log = Log.find(params[:id])
       m = 'You may only edit your own logs.'
       redirect_to(log_path(log), alert: m) unless current_user?(log.user)
-    end
-
-    def get_user_level
-      current_user ? User.levels[current_user.level] : 0
     end
 end

@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
       redirect_to(root_url, alert: 'Nope :(') unless current_user?(@user)
     end
 
+    def get_user_level
+      current_user ? User.levels[current_user.level] : 0
+    end
+
     def set_time_zone(&block)
       time_zone = current_user.try(:timezone) || 'UTC'
       Time.use_zone(time_zone, &block)

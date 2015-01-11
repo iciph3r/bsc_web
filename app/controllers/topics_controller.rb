@@ -65,8 +65,4 @@ class TopicsController < ApplicationController
       m = 'You may only edit your own topics.'
       redirect_to(topic_path(topic), alert: m) unless current_user?(topic.user)
     end
-
-    def get_user_level
-      current_user ? User.levels[current_user.level] : 0
-    end
 end

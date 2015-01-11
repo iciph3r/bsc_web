@@ -11,15 +11,15 @@
     Started on <%= topic.created_at.strftime('%-d %b %Y') %>
   </div>
   <div>
-    Viewed <%= pluralize(topic.view_count, 'time') %>,
   <% if topic.comments.size > 1 %>
-    last reply <%= time_ago_in_words(topic.comments.first.created_at) %> ago
+    Last reply <%= time_ago_in_words(topic.comments.first.created_at) %> ago
     by <%= topic.comments.first.user.name %>.
   <% else %>
-    no replies.
+    No replies.
   <% end %>
     <span class="pull-right">
-  <%= pluralize(topic.comments.size - 1, 'reply') if topic.comments.size > 1 %>
+      <%= pluralize(topic.view_count, 'view') %>,
+      <%= pluralize(topic.comments.size - 1, 'reply') %>
     </span>
   </div>
 </section>

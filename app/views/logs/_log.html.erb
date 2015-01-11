@@ -10,15 +10,15 @@
     <%= log.description %>
   </div>
   <div>
-    Viewed <%= pluralize(log.view_count, 'time') %>,
     <% if log.comments.any? %>
-      last comment <%= time_ago_in_words(log.comments.first.created_at) %> ago
-      by <%= log.comments.first.user.name %>.
+      Last comment <%= time_ago_in_words(log.comments.first.created_at) %> ago
+      by <%= log.comments.last.user.name %>.
     <% else %>
-      no comments.
+      No comments.
     <% end %>
     <span class="pull-right">
-      <%= pluralize(log.comments.size, 'comment') if log.comments.any? %>
+      <%= pluralize(log.view_count, 'view') %>,
+      <%= pluralize(log.comments.size, 'comment') %>
     </span>
   </div>
 </section>
