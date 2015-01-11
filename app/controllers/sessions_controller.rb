@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       if user.active?
         log_in user
+        user.update(last_login: Time.now)
         redirect_back_or(params[:url].blank? ? user : params[:url])
       else
         message = 'Account not activated. '
