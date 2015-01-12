@@ -15,13 +15,13 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @context = context
-    @comment = @context.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
+    @context = @comment.commentable
   end
 
   def update
-    @context = context
-    @comment = @context.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
+    @context = @comment.commentable
     @comment.update_attributes(comment_params)
     if @comment.save
       redirect_to context_url(@context), notice: 'Comment updated.'

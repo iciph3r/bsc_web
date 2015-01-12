@@ -5,8 +5,17 @@
 
 <section class="forum comment">
   <h1>Comment: <%= @context.title %></h1>
-  <%= render partial: 'shared/comment_form',
-             locals: { context: @context,
-                       comment: @comment,
-                       button_caption: 'Save Changes' } %>
+  <fieldset class="form">
+    <legend>Comment Form</legend>
+    <%= form_for @comment do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :content, 'Comment:'%>
+      <%= f.text_area :content, placeholder: 'Enter your comment...' %>
+
+      <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
+        <%= icon('save fa-fw', 'Save Changes') %>
+      <% end %>
+    <% end %>
+  </fieldset>
 </section>
