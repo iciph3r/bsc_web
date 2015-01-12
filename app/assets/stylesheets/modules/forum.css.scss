@@ -43,6 +43,13 @@
   }
 }
 
+.comment-new {
+  @extend %box;
+  .form {
+    width: 80%;
+  }
+}
+
 .pull-right {
   display: inline-block;
   float: right;

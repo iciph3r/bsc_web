@@ -16,16 +16,14 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
-    @context = @comment.commentable
   end
 
   def update
     @comment = Comment.find(params[:id])
-    @context = @comment.commentable
     @comment.update_attributes(comment_params)
     if @comment.save
-      redirect_to context_url(@context), notice: 'Comment updated.'
-      @context.decrement_view
+      redirect_to context_url(@comment.commentable), notice: 'Comment updated.'
+      @comment.commentable.decrement_view
     else
       render 'edit'
     end

@@ -1,13 +1,15 @@
-<fieldset class="form">
-  <legend>Comment Form</legend>
-  <%= form_for [context, comment] do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+<div class="comment">
+  <fieldset class="form">
+    <legend>Comment Form</legend>
+    <%= form_for [context, comment] do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label :content, 'Comment:'%>
-    <%= f.text_area :content, placeholder: 'Enter your comment...' %>
+      <%= f.label :content, 'Comment:' %>
+      <%= f.text_area :content, placeholder: 'Enter your comment...' %>
 
-    <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
-      <%= icon('comment fa-fw') %> <%= "#{button_caption}" %>
+      <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
+        <%= icon('comment fa-fw') %> <%= "#{button_caption}" %>
+      <% end %>
     <% end %>
-  <% end %>
-</fieldset>
+  </fieldset>
+</div>

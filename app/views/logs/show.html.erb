@@ -45,11 +45,9 @@
   <%= will_paginate @comments %>
 
   <% if logged_in? %>
-  <div class="forum comment">
     <%= render partial: 'shared/comment_form',
                locals: { context: @log,
                          comment: @log.comments.build,
                          button_caption: 'Post Comment' } %>
-  </div>
   <% end %>
 </article>

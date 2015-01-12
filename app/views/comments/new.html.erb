@@ -3,10 +3,19 @@
   <%= render 'topics/topics_nav' %>
 <% end %>
 
-<section class="forum comment">
-  <h1>New Comment: <%= @context.title %></h1>
-  <%= render partial: 'shared/comment_form',
-             locals: { context: @context,
-                       comment: @comment,
-                       button_caption: 'Submit Comment' } %>
+<section class="comment-new">
+  <h1>New Comment</h1>
+  <fieldset class="form">
+    <legend>Comment Form</legend>
+    <%= form_for [@context, @comment] do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :content, 'Comment:' %>
+      <%= f.text_area :content, placeholder: 'Enter your comment...' %>
+
+      <%= button_tag type: 'submit', class: 'btn', name: 'commit' do %>
+        <%= icon('comment fa-fw', 'Submit Comment') %>
+      <% end %>
+    <% end %>
+  </fieldset>
 </section>

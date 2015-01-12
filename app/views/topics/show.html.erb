@@ -36,11 +36,9 @@
              locals: { topic: @topic }) %>
   <%= will_paginate @comments %>
   <% if logged_in? %>
-    <div class="forum comment">
     <%= render partial: 'shared/comment_form',
                locals: { context: @topic,
                          comment: @topic.comments.build,
                          button_caption: 'Submit Comment' } %>
-    </div>
   <% end %>
 </article>
