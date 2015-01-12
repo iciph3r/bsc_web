@@ -20,3 +20,9 @@
     margin: 0;
   }
 }
+
+.item + .item {
+  border-top: 1px solid $global_border_color;
+  margin-top: 10px;
+  padding-top: 10px;
+}

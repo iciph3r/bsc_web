@@ -3,8 +3,8 @@
   <%= render 'topics/topics_nav' %>
 <% end %>
 
-<article class="forum topic">
-  <header class="title">
+<article>
+  <header class="index">
     <h1>
       <%= icon('thumb-tack fa-fw') if @topic.sticky? %>
       <%= @topic.title %>
