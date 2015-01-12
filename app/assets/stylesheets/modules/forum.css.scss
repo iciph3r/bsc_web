@@ -4,9 +4,6 @@
   &.index {
     @extend %box;
   }
-  .form {
-    width: 80%;
-  }
   h2 {
     display: inline-block;
     font-size: $global_font_size;
@@ -18,7 +15,7 @@
   &.topic-form {
     @extend %box;
     .form {
-      width: 50%;
+      width: 65%;
     }
   }
 }
@@ -40,6 +37,9 @@
     display: inline-block;
     font-size: $global_font_size;
     margin: 0;
+  }
+  .form {
+    width: 80%;
   }
 }
 

@@ -38,7 +38,6 @@
   <% if logged_in? %>
     <%= render partial: 'shared/comment_form',
                locals: { context: @topic,
-                         comment: @topic.comments.build,
-                         button_caption: 'Submit Comment' } %>
+                         comment: @topic.comments.build } %>
   <% end %>
 </article>
