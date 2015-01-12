@@ -1,25 +1,5 @@
 @import "globals/all";
 
-.forum {
-  &.index {
-    @extend %box;
-  }
-  h2 {
-    display: inline-block;
-    font-size: $global_font_size;
-    margin: 0;
-  }
-  .title {
-    @extend %box;
-  }
-  &.topic-form {
-    @extend %box;
-    .form {
-      width: 65%;
-    }
-  }
-}
-
 .comment {
   @extend %box;
   header {
@@ -48,9 +28,4 @@
   .form {
     width: 80%;
   }
-}
-
-.pull-right {
-  display: inline-block;
-  float: right;
 }

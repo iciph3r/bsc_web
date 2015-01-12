@@ -1,0 +1,22 @@
+@import "globals/all";
+
+.index {
+  @extend %box;
+  .title {
+    @extend %box;
+  }
+  &.topic-form {
+    @extend %box;
+    .form {
+      width: 65%;
+    }
+  }
+}
+
+.item {
+  h2 {
+    display: inline-block;
+    font-size: $global_font_size;
+    margin: 0;
+  }
+}

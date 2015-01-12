@@ -1,14 +1,6 @@
 @import "globals/all";
 
 .log {
-  &.index {
-    @extend %box;
-    h2 {
-      display: inline-block;
-      font-size: 1em;
-      margin: 0;
-    }
-  }
   &.box {
     @extend %box;
   }
