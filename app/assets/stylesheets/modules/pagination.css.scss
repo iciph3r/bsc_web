@@ -1,7 +1,8 @@
 @import "globals/all";
 
 .pagination {
-  margin: 0 auto;
-  padding: 5px;
+  border-top: 1px solid $global_border_color;
+  margin: 10px auto 0 auto;
+  padding-top: 10px;
   text-align: center;
 }
