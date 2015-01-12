@@ -10,7 +10,7 @@
                 edit_user_path(@user)) if current_user?(@user) %>
   </span>
   <ul>
-    <li><%= @user.email %></li>
+    <li>Email: <%= @user.email %></li>
     <li>Member since <%= @user.created_at.strftime('%F') %></li>
     <li>Last login: <%= @user.last_login %></li>
     <li>Account Level: <%= @user.level %></li>

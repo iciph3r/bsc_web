@@ -2,7 +2,6 @@
   <li>
     <%= link_to user.name, user_path(user) %>
   </li>
-  <li><%= user.email %></li>
   <li>Member since <%= user.created_at.strftime('%F') %></li>
   <li>Account Level: <%= user.level %></li>
 </ul>
