@@ -43,3 +43,10 @@
     }
   }
 }
+
+.forum {
+  @extend %box;
+  .form {
+    width: 60%;
+  }
+}

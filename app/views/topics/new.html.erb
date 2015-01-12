@@ -5,7 +5,8 @@
 
 <div class="forum topic-form">
   <h1>New Topic</h1>
-  <div class="form">
+  <fieldset class="form">
+    <legend>New Topic Form</legend>
     <%= form_for(@topic) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
@@ -27,7 +28,7 @@
 
       <% if current_user.admin? %>
         <%= f.label :sticky, 'Sticky Thread?' %>
-        <%= f.check_box :sticky %>
+          <%= f.check_box :sticky %>
       <% end %>
 
       <%= f.fields_for :comments do |comment| %>
@@ -39,5 +40,5 @@
         <%= 'New Topic' %>
       <% end %>
     <% end %>
-  </div>
+  </fieldset>
 </div>

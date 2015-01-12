@@ -1,6 +1,7 @@
 @import "globals/all";
 
 .users {
+  @extend %box;
   .form {
     width: 50%;
   }
