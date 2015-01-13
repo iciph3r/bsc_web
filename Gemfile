@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt'
 gem 'will_paginate'
 gem 'font-awesome-sass'
+gem 'normalize-rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'
