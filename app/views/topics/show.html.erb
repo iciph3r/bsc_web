@@ -20,14 +20,14 @@
     </div>
     <div class="stats">
       <% if @comments.size > 1 %>
-        Last comment <%= time_ago_in_words(@comments.last.created_at) %> ago
+        <%= pluralize(@comments.size - 1, 'reply') %>,
+        last comment <%= time_ago_in_words(@comments.last.created_at) %> ago
         by <%= @comments.last.user.name %>.
       <% else %>
         No replies.
       <% end %>
       <span class="pull-right">
-        <%= pluralize(@topic.view_count, 'view') %>,
-        <%= pluralize(@comments.size - 1, 'reply') %>
+        <%= pluralize(@topic.view_count, 'view') %>
       </span>
     </div>
   </header>

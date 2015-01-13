@@ -19,14 +19,14 @@
     </div>
     <div>
       <% if @comments.any? %>
-        Last comment <%= time_ago_in_words(@comments.last.created_at) %> ago
+        <%= pluralize(@comments.size, 'comment') %>,
+        last comment <%= time_ago_in_words(@comments.last.created_at) %> ago
         by <%= @comments.last.user.name %>.
       <% else %>
         No comments.
       <% end %>
       <span class="pull-right">
-        <%= pluralize(@log.view_count, 'view') %>,
-        <%= pluralize(@comments.size, 'comment') %>
+        <%= pluralize(@log.view_count, 'view') %>
       </span>
     </div>
     <hr />
@@ -34,7 +34,7 @@
     <hr />
     <pre>
 <% @log_text.each do |line| %>
-<%= colorize(line).html_safe -%>
+<%= sanitize colorize(line).html_safe -%>
 <% end %>
     </pre>
   </section>

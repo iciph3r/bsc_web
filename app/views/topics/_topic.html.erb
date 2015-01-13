@@ -12,14 +12,14 @@
   </div>
   <div>
   <% if topic.comments.size > 1 %>
-    Last reply <%= time_ago_in_words(topic.comments.first.created_at) %> ago
+    <%= pluralize(topic.comments.size, 'reply') %>,
+    last reply <%= time_ago_in_words(topic.comments.first.created_at) %> ago
     by <%= topic.comments.first.user.name %>.
   <% else %>
     No replies.
   <% end %>
     <span class="pull-right">
-      <%= pluralize(topic.view_count, 'view') %>,
-      <%= pluralize(topic.comments.size - 1, 'reply') %>
+      <%= pluralize(topic.view_count, 'view') %>
     </span>
   </div>
 </section>
