@@ -15,7 +15,7 @@ class LogsController < ApplicationController
     else
       @log_text = Log.read_log(@log)
       @comments = @log.comments.paginate(page: params[:page], per_page: 15)
-                               .order('created_at DESC')
+                               .order('created_at ASC')
       @log.increment_view
     end
   end

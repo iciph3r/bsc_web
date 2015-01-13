@@ -14,7 +14,7 @@ class TopicsController < ApplicationController
       redirect_to topics_path, alert: 'Unauthorized to view.'
     else
       @comments = @topic.comments.paginate(page: params[:page], per_page: 15)
-                        .order('created_at DESC')
+                        .order('created_at ASC')
       @topic.increment_view
     end
   end
