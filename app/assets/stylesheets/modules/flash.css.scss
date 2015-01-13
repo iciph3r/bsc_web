@@ -1,11 +1,9 @@
 @import "globals/all";
 
 $flash_alert: red;
-$background_color: black;
 $flash_notice: white;
 
 .flash {
-  background-color: $background_color !important;
   border: 1px solid;
   border-radius: $global_border_radius;
   margin-top: 10px;
