@@ -30,11 +30,11 @@
       </span>
     </div>
     <hr />
-    <%= @log.description %>
+    Description: <%= @log.description %>
     <hr />
     <pre>
 <% @log_text.each do |line| %>
-<%= sanitize colorize(line).html_safe -%>
+<%= line.html_safe -%>
 <% end %>
     </pre>
   </section>

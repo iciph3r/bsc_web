@@ -1,4 +1,4 @@
-module LogControllerHelper
+module LogsHelper
 
   def colorize(line)
       line.gsub!(/\*[[:alpha:]]+\s.+[[:alpha:]]\*/, %q[<span class="enemy">\0</span>])
@@ -26,7 +26,7 @@ module LogControllerHelper
       when /(?<main>^.+ yells.+'.+')(?<eol>\r\n|\n|\r)/
         %Q[<span class="magenta">#{$~[:main]}</span>#{$~[:eol]}]
       when /(?<main>^(Heath|Brushy Valley|Gentle Slope|Ruins))(?<eol>\r\n|\n|\r)/
-        %Q[<span class="green">#{$~[:main]}</span>#{$~[:eol]}]
+        %Q[<span class="green">(#{$~[:main]}</span>#{$~[:eol]}]
       else
         line
       end
