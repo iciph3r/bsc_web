@@ -5,14 +5,13 @@
 }
 
 html {
-
-}
-
-body {
   background-color: $global_background_color;
   color: $global_font_color;
   line-height: $global_line_height;
   font-family: $global_font_family;
+}
+
+body {
   min-width: 960px;
 }
 
@@ -69,7 +68,7 @@ hr {
 
 pre {
   background: black;
-  font-size: 1.1em;
+  font-size: .9em;
   white-space: pre-wrap;
   margin: 0;
 }
