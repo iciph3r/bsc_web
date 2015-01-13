@@ -34,7 +34,7 @@
     <hr />
     <pre>
 <% @log_text.each do |line| %>
-<%= line.html_safe -%>
+<%= colorize(line).html_safe -%>
 <% end %>
     </pre>
   </section>
