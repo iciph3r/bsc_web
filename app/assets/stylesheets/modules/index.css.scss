@@ -2,27 +2,22 @@
 
 .index {
   @extend %box;
-  .title {
-    @extend %box;
-  }
-  &.topic-form {
-    @extend %box;
-    .form {
-      width: 65%;
+  .item {
+    h2 {
+      display: inline-block;
+      font-size: $global_font_size;
+      margin: 0;
     }
   }
-}
-
-.item {
-  h2 {
-    display: inline-block;
-    font-size: $global_font_size;
-    margin: 0;
+  .item + .item {
+    border-top: 1px solid $global_border_color;
+    margin-top: 10px;
+    padding-top: 10px;
   }
-}
-
-.item + .item {
-  border-top: 1px solid $global_border_color;
-  margin-top: 10px;
-  padding-top: 10px;
+  .pagination {
+    border-top: 1px solid $global_border_color;
+    margin: 10px auto 0 auto;
+    padding-top: 10px;
+    text-align: center;
+  }
 }

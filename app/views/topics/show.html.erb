@@ -31,13 +31,15 @@
       </span>
     </div>
   </header>
-  <%= render(partial: 'shared/comment',
-             collection: @comments,
-             locals: { topic: @topic }) %>
-  <%= will_paginate @comments %>
-  <% if logged_in? %>
-    <%= render partial: 'shared/comment_form',
-               locals: { context: @topic,
-                         comment: @topic.comments.build } %>
-  <% end %>
+  <section class="comments">
+    <%= render(partial: 'shared/comment',
+               collection: @comments,
+               locals: { topic: @topic }) %>
+    <%= will_paginate @comments %>
+    <% if logged_in? %>
+      <%= render partial: 'shared/comment_form',
+                 locals: { context: @topic,
+                           comment: @topic.comments.build } %>
+    <% end %>
+  </section>
 </article>

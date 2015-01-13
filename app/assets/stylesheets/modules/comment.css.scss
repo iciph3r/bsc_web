@@ -19,3 +19,10 @@
     width: 80%;
   }
 }
+
+.comments {
+  .pagination {
+    @extend %box;
+    text-align: center;
+  }
+}

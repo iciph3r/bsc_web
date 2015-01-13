@@ -14,7 +14,7 @@ class LogsController < ApplicationController
       redirect_to logs_path, alert: 'Unauthorized to view.'
     else
       @log_text = Log.read_log(@log)
-      @comments = @log.comments.paginate(page: params[:page])
+      @comments = @log.comments.paginate(page: params[:page], per_page: 15)
       @log.increment_view
     end
   end
