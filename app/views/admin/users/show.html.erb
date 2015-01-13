@@ -1,8 +1,29 @@
-<h1>Detailed User Data</h1>
+<% provide(:title, "#{@user.name} Details") %>
 
+<section class="log box">
+<h1>Detailed User Data for <%= @user.name %></h1>
+<p>Stuff and things. Edit? View profile?</p>
 <ul>
-  <li><%= @user.name %></li>
-  <li><%= @user.email %></li>
-  <li><%= @user.created %></li>
-  <li><%= @user.updated %></li>
+  <li>Account level: <%= @user.level %></li>
+  <li>Account status: <%= @user.status %></li>
+  <li>Email: <%= @user.email %></li>
+  <li>Time data -
+    <ul>
+      <li>Created at: <%= @user.created_at %></li>
+      <li>Activated at: <%= @user.activated_at %></li>
+      <li>Last updated: <%= @user.updated_at %></li>
+      <li>Last seen: <%= @user.last_login %>,
+      (<%= time_ago_in_words(@user.last_login) %> ago)</li>
+      <li>Last password reset: <%= @user.reset_sent_at || 'None' %>
+      <li>Timezone: <%= @user.timezone %></li>
+    </ul>
+  </li>
+  <li>Posting stats -
+    <ul>
+      <li>Comments: <%= @user.comments.count %> [admin view]</li>
+      <li>Logs: <%= @user.logs.count %> [admin view]</li>
+      <li>Topics: <%= @user.topics.count %> [admin view]</li>
+    </ul>
+  </li>
 </ul>
+</section>
