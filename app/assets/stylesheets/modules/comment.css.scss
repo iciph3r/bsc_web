@@ -2,21 +2,11 @@
 
 .comment {
   @extend %box;
-  header {
-    border-bottom: 1px solid $global_border_color;
-    margin-bottom: 5px;
-  }
-  .footer {
-    //border-top: 1px solid $global_border_color;
-    color: $global_font_background_color;
-    font-size: .8em;
-    margin-top: 5px;
-  }
   h1 {
-    border: 0;
-    display: inline-block;
+    border-bottom: 1px solid $global_border_color;
     font-size: $global_font_size;
-    margin: 0;
+    font-weight: normal;
+    margin: 0 0 5px 0;
   }
   .form {
     width: 80%;
